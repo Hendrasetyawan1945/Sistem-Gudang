@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="buku_view_tree" model="ir.ui.view">
+        <field name="name">buku_view_tree</field>
+        <field name="model">p.buku</field>
+        <field name="arch" type="xml">
+            <tree string="buku_tree">
+                <field name="name"/>
+                <field name="judul"/>
+                <field name="penerbit"/>
+                <field name="penulis"/>
+                <field name="stok"/>
+                <field name="id_rak"/>
+            </tree>
+        </field>
+    </record>
+    <record id="buku_view_form" model="ir.ui.view">
+        <field name="name">buku_view_form</field>
+        <field name="model">p.buku</field>
+        <field name="arch" type="xml">
+            <form string="_form">
+                <sheet>
+                    <group string="Keterangan Buku">
+                        <field name="name"/>
+                        <field name="judul"/>
+                        <field name="stok"/>
+                    </group>
+                    <group>
+                        <field name="penulis"/>
+                        <field name="penerbit"/>
+                        <field name="id_rak"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="buku_action" model="ir.actions.act_window">
+        <field name="name">Buku</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">p.buku</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="buku_menu" 
+              name="Daftar Buku" 
+              parent="buku_root"
+              action="buku_action" 
+              sequence="10"/>
+</odoo>

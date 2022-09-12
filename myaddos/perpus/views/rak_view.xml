@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="rak_view_tree" model="ir.ui.view">
+        <field name="name">rak_view_tree</field>
+        <field name="model">p.rak</field>
+        <field name="arch" type="xml">
+            <tree string="rak_tree">
+                <field name="name"/>
+                <field name="lokasi_rak"/>
+                <field name="ids_rak"/>
+            </tree>
+        </field>
+    </record>
+    <record id="rak_view_form" model="ir.ui.view">
+        <field name="name">rak_view_form</field>
+        <field name="model">p.rak</field>
+        <field name="arch" type="xml">
+            <form string="rak_form">
+                <sheet>
+                    <group string="Penyimpanan Buku">
+                        <field name="name"/>
+                    </group>
+                    <group>
+                        <field name="lokasi_rak"/>
+                    </group>
+                    <notebook colspan='8'>
+                        <page name="name" string="Daftar Buku yang ada dalam Rak">
+                            <field name="ids_rak">
+                                <tree editable="button">
+                                    <field name="name"/>
+                                    <field name="judul"/>
+                                    <field name="penerbit"/>
+                                    <field name="penulis"/>
+                                    <field name="stok"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="rak_action" model="ir.actions.act_window">
+        <field name="name">Rak Penyimpanan Buku</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">p.rak</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="rak_categ"
+              name="Rak Buku " parent="buku_root"
+              action="rak_action"
+              sequence="20"/>
+</odoo>

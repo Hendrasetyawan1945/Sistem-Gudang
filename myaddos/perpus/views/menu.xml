@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="perpus_root"
+            name="Perpustakaan"
+            sequence="10"/>
+    <menuitem id="pengguna_root"
+            name="Daftar Pengguna"
+            parent="perpus_root"
+            sequence="10"/>
+    <menuitem id="buku_root"
+            name="Penyimpanan Buku"
+            parent="perpus_root"
+            sequence="20"/>
+
+</odoo>

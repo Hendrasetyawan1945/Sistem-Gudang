@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="peminjaman_view_tree" model="ir.ui.view">
+        <field name="name">peminjaman_view_tree</field>
+        <field name="model">p.peminjaman</field>
+        <field name="arch" type="xml">
+            <tree string="peminjaman_tree">
+                <field name="name"/>
+                <field name="no_anggota"/>
+                <field name="nama_peminjaman"/>
+                <field name="peminjaman_ids"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="peminjaman_view_form" model="ir.ui.view">
+        <field name="name">peminjaman_view_form</field>
+        <field name="model">p.peminjaman</field>
+        <field name="arch" type="xml">
+            <form string="peminjaman_form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="no_anggota"/>
+                        <field name="nama_peminjaman"/>
+
+                    </group>
+                    <notebook colspan='8'>
+                        <page name="name" string="No Peminjaman Buku">
+                            <field name="peminjaman_ids">
+                                <tree editable="button">
+                                    <field name="kd_register"/>
+                                    <field name="jdl"/>
+                                    <field name="tgl_pinjam"/>
+                                    <field name="tgl_kembali"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="peminjaman_action" model="ir.actions.act_window">
+        <field name="name">Daftar Peminjaman</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">p.peminjaman</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="peminjaman_categ" 
+              name="Daftar Peminjaman" 
+              parent="perpus_root" action="peminjaman_action" 
+              sequence="30"/>
+</odoo>

@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_p_buku,access.p.buku,model_p_buku,,1,1,1,1
+access_p_rak,access.p.rak,model_p_rak,,1,1,1,1
+access_p_anggota,access.p.anggota,model_p_anggota,,1,1,1,1
+access_p_peminjaman,access.p.peminjaman,model_p_peminjaman,,1,1,1,1
+access_p_peminjamandetail,access.p.peminjamandetail,model_p_peminjamandetail,,1,1,1,1
+

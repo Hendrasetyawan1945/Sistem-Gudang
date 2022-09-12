@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="perpus_petugas_tree_inherit" model="ir.ui.view">
+        <field name="name">perpus_petugas_tree_inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree" />
+        <field name="arch" type="xml">
+        <xpath expr="//field[@name='display_name']" position="after">
+            <field name="jabatan"/>
+        </xpath>
+        </field>
+    </record>
+     <record id="perpus_petugas_form_inherit" model="ir.ui.view">
+        <field name="name">perpus_petugas_form_inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+        <xpath expr="//field[@name='email']" position="after">
+            <field name="jabatan"/>
+        </xpath>
+        </field>
+    </record>
+
+    <!-- Inherit Form View to Modify it -->
+    <record id="perpus_form_inherite" model="ir.ui.view">
+        <field name="name">perpus_form_inherite</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='display_name']" position="after">
+                <field name="jabatan"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="petugas_action" model="ir.actions.act_window">
+        <field name="name">Petugas Perpustakaan</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="petugas_categ"
+              name="Petugas Perpus"
+              parent="pengguna_root" action="petugas_action"
+              sequence="20"/>
+</odoo>

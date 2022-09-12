@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="perpus.list">
+      <field name="name">perpus list</field>
+      <field name="model">perpus.perpus</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="perpus.action_window">
+      <field name="name">perpus window</field>
+      <field name="res_model">perpus.perpus</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="perpus.action_server">
+      <field name="name">perpus server</field>
+      <field name="model_id" ref="model_perpus_perpus"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="perpus" id="perpus.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="perpus.menu_1" parent="perpus.menu_root"/>
+    <menuitem name="Menu 2" id="perpus.menu_2" parent="perpus.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="perpus.menu_1_list" parent="perpus.menu_1"
+              action="perpus.action_window"/>
+    <menuitem name="Server to list" id="perpus" parent="perpus.menu_2"
+              action="perpus.action_server"/>
+-->
+  </data>
+</odoo>
