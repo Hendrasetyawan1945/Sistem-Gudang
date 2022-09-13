@@ -14,7 +14,3 @@ class rak(models.Model):
         inverse_name='id_rak',
         string='Ids_rak',
         required=False)
-    # buku_id = fields.Many2one(
-    #     comodel_name='p.buku',
-    #     string='Buku_id',
-    #     required=False)

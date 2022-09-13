@@ -1,25 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="perpus_petugas_tree_inherit" model="ir.ui.view">
-        <field name="name">perpus_petugas_tree_inherit</field>
+    <record id="perpus_petugas_tree_inherite" model="ir.ui.view">
+        <field name="name">perpus_petugas_tree_inherite</field>
         <field name="model">res.partner</field>
-        <field name="inherit_id" ref="base.view_partner_tree" />
+        <field name="inherit_id" ref="base.view_partner_tree"/>
         <field name="arch" type="xml">
-        <xpath expr="//field[@name='display_name']" position="after">
-            <field name="jabatan"/>
-        </xpath>
+            <xpath expr="//field[@name='email']" position="after">
+                <field name="jabatan"/>
+            </xpath>
+
+            <xpath expr="//field[@name='display_name']" position="attributes">
+                <attribute name="string">Nama Petugas</attribute>
+            </xpath>
         </field>
     </record>
-     <record id="perpus_petugas_form_inherit" model="ir.ui.view">
-        <field name="name">perpus_petugas_form_inherit</field>
+    <!-- Inherit Form View to Modify it -->
+    <record id="perpus_petugas_form_inherite" model="ir.ui.view">
+        <field name="name">perpus_petugas_form_inherite</field>
         <field name="model">res.partner</field>
-        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
-        <xpath expr="//field[@name='email']" position="after">
-            <field name="jabatan"/>
-        </xpath>
+            <xpath expr="//field[@name='email']" position="after">
+                <field name="jabatan"/>
+            </xpath>
+            <xpath expr="//field[@name='display_name']" position="attributes">
+                <attribute name="string">Nama Petugas</attribute>
+            </xpath>
+            <xpath expr="//field[@name='email']" position="attributes">
+                <attribute name="string">Gmail Petugas</attribute>
+            </xpath>
         </field>
     </record>
+
+
+
+
 
     <!-- Inherit Form View to Modify it -->
     <record id="perpus_form_inherite" model="ir.ui.view">
@@ -29,6 +44,14 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='display_name']" position="after">
                 <field name="jabatan"/>
+            </xpath>
+
+            <xpath expr="//field[@name='display_name']" position="attributes">
+                <attribute name="string">Nama Petugas</attribute>
+            </xpath>
+
+             <xpath expr="//field[@name='email']" position="attributes">
+                <attribute name="string">Gmail Petugas</attribute>
             </xpath>
         </field>
     </record>

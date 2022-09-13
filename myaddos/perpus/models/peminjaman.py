@@ -10,6 +10,10 @@ class peminjaman(models.Model):
         comodel_name='p.anggota',
         string='No_anggota',
         required=False)
+    petugas_id = fields.Many2one(
+        comodel_name='res.partner',
+        string='Petugas_id',
+        required=False)
     peminjaman_ids = fields.One2many(
         comodel_name='p.peminjamandetail',
         inverse_name='peminjaman_id',
