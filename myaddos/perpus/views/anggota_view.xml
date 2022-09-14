@@ -10,6 +10,7 @@
                 <field name="alamat"/>
                 <field name="prodi"/>
                 <field name="jk"/>
+                <field name="anggota"/>
                 <field name="img" widget="image" class="img-circle" width="50" height="75" />
             </tree>
         </field>
@@ -30,6 +31,7 @@
                         <field name="alamat"/>
                         <field name="prodi"/>
                         <field name="jk"/>
+                        <field name="anggota"/>
                     </group>
                 </sheet>
             </form>

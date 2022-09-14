@@ -1,5 +1,5 @@
 from odoo import fields, models, api
-
+from odoo.exceptions import ValidationError
 
 class peminjaman(models.Model):
     _name = 'p.peminjaman'
@@ -19,11 +19,28 @@ class peminjaman(models.Model):
         inverse_name='peminjaman_id',
         string='Peminjaman_ids',
         required=False)
+    cek = fields.Boolean(
+        compute="_compute_cek",
+        string='Apakah Anggota ',
+        required=False)
     nama_peminjaman = fields.Char(
         compute="_compute_nama",
         string='Nama_peminjaman',
         required=False)
+    # @api.constrains('cek')
+    # def cek_anggota(self):
+    #     if self.cek == 'False':
+    #         raise ValidationError("Maaf tidak dapat meminjam buku karena belum termasuk anggota !!!")
 
+    @api.constrains('cek')
+    def _check_anggota(self):
+        for record in self:
+            if record.cek == False:
+                raise ValidationError("Maaf tidak dapat meminjam buku karena belum termasuk anggota !!")
+    @api.depends('cek')
+    def _compute_cek(self):
+        for a in self:
+            a.cek = a.no_anggota.anggota
     @api.depends('nama_peminjaman')
     def _compute_nama(self):
         for i in self:
@@ -43,16 +60,26 @@ class peminjamandetail(models.Model):
         required=False)
     jdl = fields.Char(
         compute="_compute_jdl",
-        string='JUdul',
+        string='Judul',
+        required=False)
+    qty = fields.Integer(
+        string='Qty',
         required=False)
     tgl_pinjam = fields.Datetime(
-        string='Tgl_pinjam', 
+        string='Tanggal Pinjam',
         required=False,
         default=fields.Datetime.now())
     tgl_kembali = fields.Date(
-        string='Tgl_kembali', 
+        string='Tanggal Kembali',
         required=False)
 
+    @api.model
+    def create(self, vals):
+        record = super(peminjamandetail, self).create(vals)
+        if record.qty:
+            self.env['p.buku'].search([('id', '=', record.kd_register.id)]).write({
+                'stok': record.kd_register.stok - record.qty})
+            return record
     @api.depends('jdl')
     def _compute_jdl(self):
         for i in self:

@@ -34,6 +34,7 @@
         'views/petugas_view.xml',
         'views/anggota_view.xml',
         'views/peminjaman_view.xml',
+        'views/pengembalian_view.xml',
 
     ],
     # only loaded in demonstration mode

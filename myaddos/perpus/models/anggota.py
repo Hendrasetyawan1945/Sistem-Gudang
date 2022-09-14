@@ -1,6 +1,5 @@
 from odoo import fields, models, api
 
-
 class anggota(models.Model):
     _name = 'p.anggota'
     _description = 'Description'
@@ -20,5 +19,8 @@ class anggota(models.Model):
         selection=[('perempuan', 'Perempuan'),
                    ('laki-laki', 'Laki-Laki'), ],
         required=False, )
+    anggota = fields.Boolean(
+        string='Anggota',
+        required=False)
     img = fields.Binary(string="Profil")
 

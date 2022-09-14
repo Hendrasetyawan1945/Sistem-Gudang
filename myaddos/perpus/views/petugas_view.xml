@@ -8,7 +8,12 @@
             <xpath expr="//field[@name='email']" position="after">
                 <field name="jabatan"/>
             </xpath>
-
+            <xpath expr="//field[@name='phone']" position="attributes">
+                <attribute name="string">No Telephone</attribute>
+            </xpath>
+            <xpath expr="//field[@name='email']" position="attributes">
+                <attribute name="string">Gmail Petugas</attribute>
+            </xpath>
             <xpath expr="//field[@name='display_name']" position="attributes">
                 <attribute name="string">Nama Petugas</attribute>
             </xpath>

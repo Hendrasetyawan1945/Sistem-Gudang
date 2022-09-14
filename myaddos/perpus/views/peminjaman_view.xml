@@ -9,6 +9,7 @@
                 <field name="no_anggota"/>
                 <field name="petugas_id"/>
                 <field name="nama_peminjaman"/>
+                <field name="cek"/>
                 <field name="peminjaman_ids"/>
             </tree>
         </field>
@@ -24,6 +25,7 @@
                         <field name="name"/>
                         <field name="no_anggota"/>
                         <field name="nama_peminjaman"/>
+                        <field name="cek"/>
                         <field name="petugas_id"/>
                     </group>
                     <notebook colspan='8'>
@@ -32,6 +34,7 @@
                                 <tree editable="button">
                                     <field name="kd_register"/>
                                     <field name="jdl"/>
+                                    <field name="qty"/>
                                     <field name="tgl_pinjam"/>
                                     <field name="tgl_kembali"/>
                                 </tree>

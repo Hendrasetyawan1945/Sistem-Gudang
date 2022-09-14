@@ -1,2 +1,2 @@
 
-./odoo-bin --addons-path=/home/hendra/odoo-15.0/addons,/home/hendra/odoo-15.0/addosku -d odoo15x --db_port 5432 --xmlrpc-port=8071  --limit-memory-hard 0 --limit-time-real=10000 -i base -u hendra
+./odoo-bin --addons-path=/home/hendra/odoo-15.0/addons,/home/hendra/odoo-15.0/myaddos -d perpustakaan --db_port 5432 --xmlrpc-port=8069  --limit-memory-hard 0 --limit-time-real=10000 -i base -u perpus
