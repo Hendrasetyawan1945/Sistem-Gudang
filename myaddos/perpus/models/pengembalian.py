@@ -1,5 +1,4 @@
 from datetime import datetime
-
 from odoo import fields, models, api
 
 

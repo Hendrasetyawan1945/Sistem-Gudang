@@ -36,6 +36,9 @@
         'views/peminjaman_view.xml',
         'views/pengembalian_view.xml',
 
+        'report/report.xml',
+        'report/peminjaman_pdf.xml',
+
     ],
     # only loaded in demonstration mode
     'demo': [

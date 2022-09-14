@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <record id="report_peminjaman_pdf" model="ir.actions.report">
+        <field name="name"> Peminjaman PDF</field>
+        <field name="model">p.peminjaman</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">perpus.report_peminjaman_pdf</field>
+        <field name="report_file">perpus.report_peminjaman_pdf</field>
+        <field name="binding_model_id" ref="model_p_peminjaman"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>
