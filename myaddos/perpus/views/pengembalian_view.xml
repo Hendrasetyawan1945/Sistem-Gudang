@@ -8,6 +8,7 @@
                 <field name="peminjaman_id"/>
                 <field name="name"/>
                 <field name="tgl_pengembalian"/>
+                <field name="tgl_kesepakatan"/>
             </tree>
         </field>
     </record>
@@ -20,10 +21,21 @@
                     <group string="Daftar Pengembalian Buku">
                         <field name="peminjaman_id"/>
                         <field name="name"/>
-                    </group>
-                    <group>
                         <field name="tgl_pengembalian"/>
+                        <field name="tgl_kesepakatan"/>
+                        <field name="terlambat"/>
+                        <field name="denda"/>
                     </group>
+<!--                    <notebook colspan='8'>-->
+<!--                        <page name="name" string="No Pengembalian Buku">-->
+<!--                            <field name="pengembalian_ids">-->
+<!--                                <tree editable="button">-->
+<!--                                    <field name="detailpeminjaman"/>-->
+
+<!--                                </tree>-->
+<!--                            </field>-->
+<!--                        </page>-->
+<!--                    </notebook>-->
                 </sheet>
             </form>
         </field>
@@ -36,7 +48,7 @@
     </record>
     <!-- This Menu Item must have a parent and an action -->
     <menuitem id="pengembalian_categ"
-              name="Pengembalian"
+              name="Daftar Pengembalian"
               parent="perpus_root"
               action="pengembalian_action"
               sequence="40"/>

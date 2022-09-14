@@ -11,6 +11,8 @@
                 <field name="nama_peminjaman"/>
                 <field name="cek"/>
                 <field name="peminjaman_ids"/>
+                <field name="tgl_pinjam"/>
+                <field name="tgl_kembali"/>
             </tree>
         </field>
     </record>
@@ -27,6 +29,8 @@
                         <field name="nama_peminjaman"/>
                         <field name="cek"/>
                         <field name="petugas_id"/>
+                        <field name="tgl_pinjam"/>
+                        <field name="tgl_kembali"/>
                     </group>
                     <notebook colspan='8'>
                         <page name="name" string="No Peminjaman Buku">
@@ -35,8 +39,6 @@
                                     <field name="kd_register"/>
                                     <field name="jdl"/>
                                     <field name="qty"/>
-                                    <field name="tgl_pinjam"/>
-                                    <field name="tgl_kembali"/>
                                 </tree>
                             </field>
                         </page>

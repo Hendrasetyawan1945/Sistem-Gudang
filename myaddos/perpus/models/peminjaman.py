@@ -27,11 +27,17 @@ class peminjaman(models.Model):
         compute="_compute_nama",
         string='Nama_peminjaman',
         required=False)
+    tgl_pinjam = fields.Datetime(
+        string='Tanggal Pinjam',
+        required=False,
+        default=fields.Datetime.now())
+    tgl_kembali = fields.Date(
+        string='Tanggal Kembali',
+        required=False)
     # @api.constrains('cek')
     # def cek_anggota(self):
     #     if self.cek == 'False':
     #         raise ValidationError("Maaf tidak dapat meminjam buku karena belum termasuk anggota !!!")
-
     @api.constrains('cek')
     def _check_anggota(self):
         for record in self:
@@ -65,13 +71,7 @@ class peminjamandetail(models.Model):
     qty = fields.Integer(
         string='Qty',
         required=False)
-    tgl_pinjam = fields.Datetime(
-        string='Tanggal Pinjam',
-        required=False,
-        default=fields.Datetime.now())
-    tgl_kembali = fields.Date(
-        string='Tanggal Kembali',
-        required=False)
+
 
     @api.model
     def create(self, vals):
