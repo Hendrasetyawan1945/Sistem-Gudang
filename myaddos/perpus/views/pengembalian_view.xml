@@ -7,6 +7,7 @@
             <tree string="pengembalian_tree">
                 <field name="peminjaman_id"/>
                 <field name="name"/>
+                <field name="tgl_pengembalian"/>
             </tree>
         </field>
     </record>
@@ -19,6 +20,9 @@
                     <group string="Daftar Pengembalian Buku">
                         <field name="peminjaman_id"/>
                         <field name="name"/>
+                    </group>
+                    <group>
+                        <field name="tgl_pengembalian"/>
                     </group>
                 </sheet>
             </form>
