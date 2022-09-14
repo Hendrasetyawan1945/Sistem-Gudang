@@ -5,6 +5,7 @@
         <field name="model">p.pengembalian</field>
         <field name="arch" type="xml">
             <tree string="pengembalian_tree">
+                <field name="peminjaman_id"/>
                 <field name="name"/>
             </tree>
         </field>
@@ -15,7 +16,8 @@
         <field name="arch" type="xml">
             <form string="pengembalian_form">
                 <sheet>
-                    <group>
+                    <group string="Daftar Pengembalian Buku">
+                        <field name="peminjaman_id"/>
                         <field name="name"/>
                     </group>
                 </sheet>
@@ -32,5 +34,6 @@
     <menuitem id="pengembalian_categ"
               name="Pengembalian"
               parent="perpus_root"
-              action="" sequence="40"/>
+              action="pengembalian_action"
+              sequence="40"/>
 </odoo>
