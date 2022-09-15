@@ -81,17 +81,14 @@ class peminjaman(models.Model):
                     print(a)
                 for i in a:
                     print(str(i.kd_register.name) + ' ' + str(i.qty))
-                    i.kode_barang_ids.stok -= i.qty
+                    i.kd_register.stok -= i.qty
             record = super(peminjaman, self).unlink()
 
-    # @api.constrains('cek')
-    # def cek_anggota(self):
-    #     if self.cek == 'False':
-    #         raise ValidationError("Maaf tidak dapat meminjam buku karena belum termasuk anggota !!!")
+
     @api.constrains('cek')
     def _check_anggota(self):
         for record in self:
-            if record.cek == False:
+            if record.cek == '0':
                 raise ValidationError("Maaf tidak dapat meminjam buku karena belum termasuk anggota !!")
     @api.depends('cek')
     def _compute_cek(self):
@@ -129,7 +126,6 @@ class peminjamandetail(models.Model):
     qty = fields.Integer(
         string='Qty',
         required=False)
-
 
     @api.model
     def create(self, vals):

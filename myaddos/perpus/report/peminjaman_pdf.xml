@@ -16,21 +16,12 @@
                             <div class="col-6"><span t-field="doc.no_anggota"/></div>
                         </div>
                         <div class="row">
-                            <div class="col-4">Nama Peminjaman :</div>
-                            <div class="col-6"><span t-field="doc.nama"/></div>
+                            <div class="col-4">Anggota perpus :</div>
+                            <div class="col-6"><span t-field="doc.cek"/></div>
                         </div>
                         <div class="row">
                             <div class="col-4">Nama Petugas :</div>
                             <div class="col-6"><span t-field="doc.petugas_id"/></div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-4"></div>
-                            <div class="col-10"><span t-field="doc.img"/></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-4">Alamat :</div>
-                            <div class="col-5"><span t-field="doc.alamat"/></div>
                         </div>
                         <div class="row">
                             <div class="col-4">Tanggal Peminjaman :</div>
@@ -63,7 +54,7 @@
                         </thead>
                         <tbody>
                             <tr t-foreach="doc.peminjaman_ids" t-as="i">
-                                <td><span t-field="i.kode_register"/></td>
+                                <td><span t-field="i.kd_register"/></td>
                                 <td><span t-field="i.jdl"/></td>
                                 <td><span t-field="i.qty"/></td>
                             </tr>
