@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="seq_p_pengembalian" model="ir.sequence">
+            <field name="name">Pengembalian Sequence</field>
+            <field name="code">p.pengembalian</field>
+            <field name="prefix">Back</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

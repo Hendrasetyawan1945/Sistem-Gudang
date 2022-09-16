@@ -37,51 +37,43 @@
             </form>
         </field>
     </record>
-<!--
-<kanban class="o_res_partner_kanban" sample="1">
+
+    <record id="anggota_kanban" model="ir.ui.view">
+     <field name="name">anggota.kanban</field>
+      <field name="model">p.anggota</field>
+     <field name="arch" type="xml">
+        <kanban>
                 <field name="name"/>
                 <field name="nama"/>
                 <field name="alamat"/>
                 <field name="prodi"/>
                 <field name="jk"/>
+                <field name="anggota"/>
                 <field name="img" widget="image" class="img-circle" width="50" height="75" />
-                    <templates>
-                        <t t-name="kanban-box">
-                            <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_res_partner_kanban">
-                                <t t-if="!record.is_company.raw_value">
-                                    <t t-set="background_image" t-value="kanban_image('res.partner', 'avatar_128', record.id.raw_value)"/>
-                                    <div class="o_kanban_image_fill_left d-none d-md-block" t-attf-style="background-image:url('#{background_image}')">
-                                        <img class="o_kanban_image_inner_pic" t-if="record.parent_id.raw_value" t-att-alt="record.parent_id.value" t-att-src="kanban_image('res.partner', 'avatar_128', record.parent_id.raw_value)"/>
-                                    </div>
-                                    <div class="o_kanban_image d-md-none" t-attf-style="background-image: url(#{background_image})">
-                                        <img class="o_kanban_image_inner_pic" t-if="record.parent_id.raw_value" t-att-alt="record.parent_id.value" t-att-src="kanban_image('res.partner', 'avatar_128', record.parent_id.raw_value)"/>
-                                    </div>
-                                </t>
-                                <t t-else="">
-                                    <div class="o_kanban_image_fill_left o_kanban_image_full" t-attf-style="background-image: url(#{kanban_image('res.partner', 'avatar_128', record.id.raw_value)})" role="img"/>
-                                </t>
-                                <div class="oe_kanban_details d-flex flex-column">
-                                    <strong class="o_kanban_record_title oe_partner_heading"><field name="name"/></strong>
-                                    <div class="o_kanban_tags_section oe_kanban_partner_categories"/>
-                                    <ul>
-                                        <li t-if="record.parent_id.raw_value and !record.function.raw_value"><field name="nama"/></li>
-                                        <li t-if="!record.parent_id.raw_value and record.function.raw_value"><field name="prodi"/></li>
-                                        <li t-if="record.parent_id.raw_value and record.function.raw_value"><field name="prodi"/> at <field name="alamat"/></li>
-                                        <li t-if="record.city.raw_value or record.country_id.raw_value">
-                                            <t t-if="record.city.raw_value"><field name="alamat"/><t t-if="record.country_id.raw_value">, </t></t>
-                                            <t t-if="record.country_id.raw_value"><field name="jk"/></t>
-                                        </li>
-                                        <li t-if="record.email.raw_value" class="o_text_overflow"><field name="name"/></li>
-                                    </ul>
-                                    <div class="o_row">
-                                        <span class="oe_kanban_partner_links"/>
-                                    </div>
-                                </div>
-                            </div>
-                        </t>
-                    </templates>
-                </kanban>
--->
+     <templates>
+     <t t-name="kanban-box">
+         <div t-attf-class="oe kanban_global_click">
+             <div class="oe_kanban_global">
+                 <div class="container">
+                 <ul>
+                    <li>No :<field name="name"/></li>
+                    <li>Nama :<field name="nama"/> </li>
+                     <li><field name="img" widget="image" class="img-circle" width="50" height="75" /></li>
+                     <li>Alamat :<field name="alamat"/></li>
+                     <li>Prodi : <field name="prodi"/></li>
+                     <li>Jenis Kelamin :<field name="jk"/></li>
+                     <li>Anggota Perpus :<field name="anggota"/></li>
+                 </ul>
+             </div>
+         </div>
+         </div>
+
+     </t>
+     </templates>
+     </kanban>
+     </field>
+    </record>
+
     <record id="anggota_action" model="ir.actions.act_window">
         <field name="name">Anggota Perpus</field>
         <field name="type">ir.actions.act_window</field>

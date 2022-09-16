@@ -5,6 +5,7 @@
         <field name="model">p.pengembalian</field>
         <field name="arch" type="xml">
             <tree string="pengembalian_tree">
+                <field name="id_pengembalian"/>
                 <field name="peminjaman_id"/>
                 <field name="name"/>
                 <field name="tgl_pengembalian"/>
@@ -18,6 +19,11 @@
         <field name="arch" type="xml">
             <form string="pengembalian_form">
                 <sheet>
+                    <div class="oe_title">
+                        <h5>
+                           <b>Kode Pengembalian : </b> <field name="id_pengembalian" readonly="1"/>
+                        </h5>
+                    </div>
                     <group string="Daftar Pengembalian Buku">
                         <field name="peminjaman_id"/>
                         <field name="name"/>
@@ -26,16 +32,6 @@
                         <field name="terlambat"/>
                         <field name="denda"/>
                     </group>
-<!--                    <notebook colspan='8'>-->
-<!--                        <page name="name" string="No Pengembalian Buku">-->
-<!--                            <field name="pengembalian_ids">-->
-<!--                                <tree editable="button">-->
-<!--                                    <field name="detailpeminjaman"/>-->
-
-<!--                                </tree>-->
-<!--                            </field>-->
-<!--                        </page>-->
-<!--                    </notebook>-->
                 </sheet>
             </form>
         </field>

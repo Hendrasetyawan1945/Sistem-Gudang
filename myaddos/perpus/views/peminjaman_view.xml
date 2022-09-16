@@ -5,6 +5,7 @@
         <field name="model">p.peminjaman</field>
         <field name="arch" type="xml">
             <tree string="peminjaman_tree">
+<!--                <field name="id_peminjaman"/>-->
                 <field name="name"/>
                 <field name="no_anggota"/>
                 <field name="petugas_id"/>
@@ -31,15 +32,16 @@
 
                     <header>
                         <button string="Draf" name="action_draf" type="object" confirm="Apakah yakin anda akan mengembalikan transaksi ini ke draf ?" states="cancel"/>
+                        <button string="Confirm" name="action_confirm" type="object" states="draf" /> <!--Untuk merubah menjadi confim -->
                         <button string="Done" name="action_done" type="object" states="confirm"/>
                         <button string="Cancel" name="action_cancel" type="object" confirm="Apakah anda akan membatalkan pembelian?" states="confirm,done" />
-                        <button string="Confirm" name="action_confirm" type="object" states="draf" /> <!--Untuk merubah menjadi confim -->
 
                         <field name="state" widget="statusbar" statusbar_visible="draf,confirm,done"/>
                     </header>
 
                 <sheet>
                     <group>
+<!--                        <h5><b><field name="id_peminjaman" readonly="1"/></b></h5>-->
                         <field name="name"/>
                         <field name="no_anggota"/>
                         <field name="nama_peminjaman"/>
@@ -54,7 +56,7 @@
                                 <tree editable="button">
                                     <field name="kd_register"/>
                                     <field name="jdl"/>
-                                    <field name="qty"/>
+                                    <field name="qty" sum="jum"/>
                                 </tree>
                             </field>
                         </page>

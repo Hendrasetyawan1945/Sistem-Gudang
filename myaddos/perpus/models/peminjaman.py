@@ -1,10 +1,15 @@
-from odoo import fields, models, api
+from odoo import fields, models, api, _
 from odoo.exceptions import ValidationError
 
 class peminjaman(models.Model):
     _name = 'p.peminjaman'
     _description = 'Description'
-
+    # _rec_name = 'id_peminjaman'
+    #
+    # id_peminjaman = fields.Char(
+    #     string='ID Peminjaman',
+    #     required=True, default=lambda self: _('New'),
+    #     copy=False, readonly='True')
     name = fields.Char(string='Kode Peminjaman',
                        required=True,
                        )
@@ -37,9 +42,9 @@ class peminjaman(models.Model):
         string='Tanggal Kembali',
         required=False)
     state = fields.Selection(string='Status',
-                             selection=[('draf', 'Draf'),
-                                        ('done', 'Done'),
+                             selection=[('draf', 'Draf'),                                        ('confirm', 'Confirm'),
                                         ('confirm', 'Confirm'),
+                                        ('done', 'Done'),
                                         ('cancel', 'Cancel')],
                              required=True,
                              readonly=True,
@@ -83,8 +88,6 @@ class peminjaman(models.Model):
                     print(str(i.kd_register.name) + ' ' + str(i.qty))
                     i.kd_register.stok -= i.qty
             record = super(peminjaman, self).unlink()
-
-
     @api.constrains('cek')
     def _check_anggota(self):
         for record in self:
@@ -107,6 +110,13 @@ class peminjaman(models.Model):
         self.write({'state': 'cancel'})
     def action_draf(self):
         self.write({'state': 'draf'})
+
+    # @api.model
+    # def create(self, vals):
+    #     if vals.get('id_peminjaman', _('New')) == _('New'):
+    #         vals['id_peminjaman'] = self.env['ir.sequence'].next_by_code('p.peminjaman') or _('New')
+    #     record = super(peminjaman, self).create(vals)
+    #     return record
 class peminjamandetail(models.Model):
     _name = 'p.peminjamandetail'
     _description = 'ModelName'
@@ -138,3 +148,15 @@ class peminjamandetail(models.Model):
     def _compute_jdl(self):
         for i in self:
             i.jdl = i.kd_register.judul
+
+    @api.constrains('qty')
+    def _checkpemjualan(self):
+        for i in self:
+            if i.qty < 1:
+                raise ValidationError(
+                    'Maaf Peminjaman Buku {} harus di isi tidak boleh 0 !!!'.format(
+                        i.kd_register.judul))
+            elif (i.qty > i.kd_register.stok):
+                raise ValidationError('Stok Buku {} tidak mencukupi, hanya tersedia {}'
+                                      .format(i.kd_register.judul, i.kd_register.stok))
+

@@ -9,4 +9,13 @@
         <field name="binding_model_id" ref="model_p_peminjaman"/>
         <field name="binding_type">report</field>
     </record>
+    <record id="report_pengembalian_pdf" model="ir.actions.report">
+        <field name="name"> Pengembalian PDF</field>
+        <field name="model">p.pengembalian</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">perpus.report_pengembalian_pdf</field>
+        <field name="report_file">perpus.report_pengembalian_pdf</field>
+        <field name="binding_model_id" ref="model_p_pengembalian"/>
+        <field name="binding_type">report</field>
+    </record>
 </odoo>

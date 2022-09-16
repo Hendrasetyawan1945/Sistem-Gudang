@@ -26,6 +26,10 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
+        'data/pengembalian_data.xml',
+        'data/peminjaman_data.xml',
+
+
         'views/views.xml',
         'views/templates.xml',
         'views/menu.xml',
@@ -38,6 +42,7 @@
 
         'report/report.xml',
         'report/peminjaman_pdf.xml',
+        'report/pengembalian_pdf.xml',
 
     ],
     # only loaded in demonstration mode

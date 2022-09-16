@@ -1,18 +1,24 @@
 from datetime import datetime
-from odoo import fields, models, api
+from odoo import fields, models, api,_
+from odoo.exceptions import ValidationError
 
 
 class pengembalian(models.Model):
     _name = 'p.pengembalian'
     _description = 'Description'
+    _rec_name = 'id_pengembalian'
 
+    id_pengembalian = fields.Char(
+        string='Id Pengembalian',
+        required=True, default=lambda self: _('New'),
+        copy=False, readonly='True')
     name = fields.Char(
         compute='_compute_nama_peminjam',
         string='nama peminjam')
     peminjaman_id = fields.Many2one(
         comodel_name='p.peminjaman',
         string='Peminjaman_id',
-        required=False)
+        required=True)
     tgl_kesepakatan = fields.Date(
         compute='_compute_tgl',
         string='Tgl_kesepakatan',
@@ -42,17 +48,6 @@ class pengembalian(models.Model):
             elif record.terlambat > 10:
                 record.denda = 4000 * record.terlambat
 
-    # @api.depends('terlambat')
-    # def _compute_denda(self):
-    #     for i in self:
-    #         if i.terlambat < 0:
-    #             i.denda = 0
-    #         elif i.terlambat > 5:
-    #             i.denda = i.terlambat * 5000
-    #         elif i.terlambat > 10:
-    #             i.denda = i.terlambat * 10000
-    #         else:
-    #             pass
     @api.depends('peminjaman_id')
     def _compute_nama_peminjam(self):
         for record in self:
@@ -68,41 +63,9 @@ class pengembalian(models.Model):
                 i.terlambat = (i.tgl_pengembalian - i.tgl_kesepakatan).days
             else:
                 i.terlambat = 0
-
-    # @api.depends('terlambat')
-    # def _compute_d(self):
-    #     for i in self:
-    #         if i.terlambat < 0:
-    #             i.denda = 0
-    #         elif i.terlambat > 5:
-    #             i.denda = i.terlambat * 5000
-    #         elif i.terlambat > 10:
-    #             i.denda = i.terlambat * 10000
-    #         else:
-    #             pass
-
-    # @api.depends('denda', 'terlambat')
-    # def _compute_denda(self):
-    #     for i in self:
-    #         if i.terlambat < 0:
-    #             i.denda = 0
-    #         elif i.terlambat > 5:
-    #             i.denda = i.terlambat * 5000
-    #         elif i.terlambat > 10:
-    #             i.denda = i.terlambat * 10000
-    #         else:
-    #             pass
-    # @api.depends('terlambat', 'td')
-    # def _compute_tb(self):
-    #     for a in self:
-    #         if a.terlambat < 0:
-    #             a.td = 0
-    #         elif a.terlambat > 5:
-    #             a.td = a.terlambat * 2000
-    #         elif a.terlambat > 10:
-    #             a.td = a.terlambat * 5000
-
-       
-
-
-
+    @api.model
+    def create(self, vals):
+        if vals.get('id_pengembalian', _('New')) == _('New'):
+            vals['id_pengembalian'] = self.env['ir.sequence'].next_by_code('p.pengembalian') or _('New')
+        record = super(pengembalian, self).create(vals)
+        return record
