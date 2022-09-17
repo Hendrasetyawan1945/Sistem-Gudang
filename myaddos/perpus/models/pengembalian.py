@@ -19,6 +19,11 @@ class pengembalian(models.Model):
         comodel_name='p.peminjaman',
         string='Peminjaman_id',
         required=True)
+    @api.depends('peminjaman_id')
+    def _compute_nama_peminjam(self):
+        for record in self:
+            record.name = self.env['p.peminjaman'].search([('id', '=', record.peminjaman_id.id)]).mapped('nama_peminjaman')
+
     tgl_kesepakatan = fields.Date(
         compute='_compute_tgl',
         string='Tgl_kesepakatan',
@@ -30,14 +35,17 @@ class pengembalian(models.Model):
         compute='_compute_keterlambatan',
         string='Terlambat', 
         required=False)
-    # td = fields.Integer(
-    #     compute='_compute_denda',
-    #     string='Total Denda',
-    #     required=False)
     denda = fields.Integer(
         compute='test',
         string='Total Denda',
         required=False)
+
+    @api.model
+    def create(self, vals):
+        record = super(pengembalian, self).create(vals)
+        if record.tgl_pengembalian:
+            self.env['p.peminjaman'].search([('id', '=', record.peminjaman_id.id)]).write({'sudah_kembali': True})
+            return record
 
     def test(self):
         for record in self:
@@ -48,10 +56,6 @@ class pengembalian(models.Model):
             elif record.terlambat > 10:
                 record.denda = 4000 * record.terlambat
 
-    @api.depends('peminjaman_id')
-    def _compute_nama_peminjam(self):
-        for record in self:
-            record.name = self.env['p.peminjaman'].search([('id', '=', record.peminjaman_id.id)]).mapped('nama_peminjaman')
     @api.depends('tgl_kesepakatan')
     def _compute_tgl(self):
         for a in self:

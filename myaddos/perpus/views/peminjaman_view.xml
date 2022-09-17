@@ -20,6 +20,7 @@
                        decoration-warning="state=='draf'"
                        decoration-danger="state=='cancel'"
                 widget="badge"/>
+                <field name="sudah_kembali"/>
             </tree>
         </field>
     </record>
@@ -42,13 +43,14 @@
                 <sheet>
                     <group>
 <!--                        <h5><b><field name="id_peminjaman" readonly="1"/></b></h5>-->
-                        <field name="name"/>
-                        <field name="no_anggota"/>
-                        <field name="nama_peminjaman"/>
-                        <field name="cek"/>
-                        <field name="petugas_id"/>
-                        <field name="tgl_pinjam"/>
-                        <field name="tgl_kembali"/>
+                        <field name="name" attrs="{'readonly' : [('state','!=',('draf'))]}"/>
+                        <field name="no_anggota" attrs="{'readonly' : [('state','!=',('draf'))]}"/>
+                        <field name="nama_peminjaman" attrs="{'readonly' : [('state','!=',('draf'))]}"/>
+                        <field name="cek" attrs="{'readonly' : [('state','!=',('draf'))]}"/>
+                        <field name="petugas_id" attrs="{'readonly' : [('state','!=',('draf'))]}"/>
+                        <field name="tgl_pinjam" attrs="{'readonly' : [('state','!=',('draf'))]}"/>
+                        <field name="tgl_kembali" attrs="{'readonly' : [('state','!=',('draf'))]}"/>
+                        <field name="sudah_kembali"/>
                     </group>
                     <notebook colspan='8'>
                         <page name="name" string="No Peminjaman Buku">

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="peminjamanreport_wizz_view_form" model="ir.ui.view">
+        <field name="name">peminjamanreport_wizz_view_form</field>
+        <field name="model">p.peminjamanreport</field>
+        <field name="arch" type="xml">
+            <form string="peminjamanreport_wizz_view_form">
+                <group>
+                    <field name="peminjam_id"/>
+                </group>
+                <group>
+                    <field name="tgl_mulai"/>
+                    <field name="tgl_sampai"/>
+                </group>
+                <footer>
+                    <button name="action_peminjamanreport" type="object" string="Print Report Peminjaman" class="btn btn-primary"/>
+                    <button special="cancel" string="Cancel" class="btn btn-danger"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+   <record id="peminjamanreport_wizz_action" model="ir.actions.act_window">
+       <field name="name">peminjamanreport_wizz_action</field>
+       <field name="type">ir.actions.act_window</field>
+       <field name="res_model">p.peminjamanreport</field>
+       <field name="view_mode">form</field>
+       <field name="view_id" ref="peminjamanreport_wizz_view_form"/>
+       <field name="target">new</field>
+   </record>
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="peminjaman_wizz_categ"
+              name="Peminjaman Report"
+              parent="perpus_root"
+              action="peminjamanreport_wizz_action"
+              sequence="49"/>
+</odoo>

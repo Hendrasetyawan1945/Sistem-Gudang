@@ -49,6 +49,7 @@ class peminjaman(models.Model):
                              required=True,
                              readonly=True,
                              default='draf')
+    sudah_kembali = fields.Boolean(string='Sudah Buku Dikembalikan', default=False)
 
     # write untuk mengedit suatu record
     def write(self, vals):

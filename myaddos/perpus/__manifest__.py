@@ -44,6 +44,8 @@
         'report/peminjaman_pdf.xml',
         'report/pengembalian_pdf.xml',
 
+        'wizz/peminjamanreport.xml',
+
     ],
     # only loaded in demonstration mode
     'demo': [
