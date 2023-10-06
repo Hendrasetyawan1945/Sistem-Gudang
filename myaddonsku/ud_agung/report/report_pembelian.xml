@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="report_pembelian_pdf">
+        <t t-call="web.html_container">
+            <t t-call="web.internal_layout">
+                <div class="page">
+                    <h1 >Detail Pembelian</h1>
+                    <t t-foreach="docs" t-as="doc">
+                        <div class="row">
+                            <div class="col-4"><h5>No Pembelian :</h5></div>
+                            <div class="col-6"><span t-field="doc.name"/></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">Tanggal Pembelian :</div>
+                            <div class="col-6"><span t-field="doc.tgl_pembelian"/></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">Nama Supplier :</div>
+                            <div class="col-6"><span t-field="doc.id_supplier"/></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">Total Pembayaran :</div>
+                            <div class="col-5"><span t-field="doc.total_bayar"/></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">Status Pembelian :</div>
+                            <div class="col-5"><span t-field="doc.state"/></div>
+                        </div>
+
+                            <div class="row">
+                            <div class="col-4"></div>
+                        </div>
+
+                        <div class="alert alert-dark" role="alert">
+                        <h5 class="italic">Daftar Pembelian detail</h5>
+                        </div>
+
+                        <table class="table table-dark table-striped">
+                        <thead>
+                            <tr>
+                            <th scope="col">Nama Barang</th>
+                            <th scope="col">Harga Beli</th>
+                            <th scope="col">Jumlah</th>                            
+                            <th scope="col">SubTotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="doc.pembelian_ids" t-as="i">
+                                <td><span t-field="i.nama"/></td>
+                                <td><span t-field="i.harga_beli"/></td>
+                                <td><span t-field="i.jumlah"/></td>
+                                <td><span t-field="i.subtotal"/></td>
+                            </tr>
+                        </tbody>
+                        </table>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+
+
+</odoo>

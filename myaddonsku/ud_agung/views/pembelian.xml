@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<record id="pembelian_view_tree" model="ir.ui.view">
+    <field name="name">pembelian_view_tree</field>
+    <field name="model">u.pembelian</field>
+    <field name="arch" type="xml">
+        <tree string="pembelian_tree">
+            <field name="name"/>
+            <!-- <field name="pembelian_ids" options="{'widget': 'many2many_tags'}"/> -->
+            <field name="name"/>
+            <field name="ket"/>
+            <field name="supplier"/>
+            <field name="namasupplier"/>
+            <field name="tgl_pembelian"/>
+            <field name="total_bayar"/>
+            <field name="state"
+                decoration-primary="state=='done'"
+                decoration-success="state=='confirm'"
+                decoration-warning="state=='draf'"
+                decoration-danger="state=='cancel'"
+                widget="badge"/>
+        </tree>
+    </field>
+</record>
+
+<!-- 
+<record id="pembelian_view_tree" model="ir.ui.view">
+    <field name="name">pembelian_view_tree</field>
+    <field name="model">u.pembelian</field>
+    <field name="arch" type="xml">
+        <tree string="pembelian_tree">
+            <field name="name"/>
+            <field name="pembelian_ids"/>
+            <field name="ket"/>
+            <field name="supplier"/>
+            <field name="namasupplier"/>
+            <field name="tgl_pembelian"/>
+            <field name="total_bayar"/>
+            <field name="state"
+                decoration-primary="state=='done'"
+                decoration-success="state=='confirm'"
+                decoration-warning="state=='draf'"
+                decoration-danger="state=='cancel'"
+                widget="badge"/>
+            <field name="barang_ids" widget="many2many_tags" readonly="1">
+                <tree>
+                    <field name="name" string="Nama Barang"/>
+                </tree>
+            </field>
+        </tree>
+    </field>
+</record> -->
+
+<!-- 
+    <record id="pembelian_view_tree" model="ir.ui.view">
+    <field name="name">pembelian_view_tree</field>
+    <field name="model">u.pembelian</field>
+    <field name="arch" type="xml">
+        <tree string="pembelian_tree">
+            <field name="name"/>
+            <field name="pembelian_ids"/>
+            <field name="barang_ids" widget="many2many_tags" readonly="1">
+                <field name="pembelian_ids" invisible="1"/>
+                <field name="name"/>
+            </field>
+            <field name="ket"/>
+            <field name="supplier"/>
+            <field name="namasupplier"/>
+            <field name="tgl_pembelian"/>
+            <field name="total_bayar"/>
+            <field name="state"
+                decoration-primary="state=='done'"
+                decoration-success="state=='confirm'"
+                decoration-warning="state=='draf'"
+                decoration-danger="state=='cancel'"
+                widget="badge"/>
+        </tree>
+    </field>
+</record> -->
+
+
+
+    <record id="pembelian_view_form" model="ir.ui.view">
+        <field name="name">pembelian_view_form</field>
+        <field name="model">u.pembelian</field>
+        <field name="arch" type="xml">
+            <form string="_form">
+                    <header>
+                        <button string="Draf" name="action_draf" type="object" confirm="Apakah yakin anda akan mengembalikan transaksi ini ke draf ?" states="cancel"/>
+                        <button string="Confirm" name="action_confirm" type="object" states="draf" />
+                        <button string="Done" name="action_done" type="object" states="confirm"/>
+                        <button string="Cancel" name="action_cancel" type="object" confirm="Apakah anda akan membatalkan pembelian?" states="confirm,done" />
+
+                        <field name="state" widget="statusbar" statusbar_visible="draf,confirm,done"/>
+                    </header>
+                <sheet>
+                    <group>
+                        <field name="name" attrs="{'readonly' : [('state','!=',('draf'))]}"/>
+                        <field name="ket" attrs="{'readonly' : [('state','!=',('draf'))]}"/>
+                        <field name="supplier" widget="many2one" options="{'no_create': True}" domain="[('name', '!=', False)]" attrs="{'readonly' : [('state','!=',('draf'))]}"/>
+                        <field name="sup_bar" string="Nama Supplier" attrs="{'readonly' : [('state','!=',('draf'))]}"/>
+                        <field name="tgl_pembelian" attrs="{'readonly' : [('state','!=',('draf'))]}"/>
+                    </group>                                   
+                    <notebook colspan='8'>
+                        <page name="name" string="No Nota pembelian">
+                            <field name="pembelian_ids">
+                                <tree string="Grup" create="true" delete="true" edit="true" editable="bottom">
+                                    <!-- <field name="barang"/> -->
+                                    <field name="barang" widget="many2one" options="{'no_create': True}" domain="[('name', '!=', False)]"/>
+                                    <field name="barang_bar" string="Nama Barang" readonly="1"/>
+                                    <field name="harga_beli"/>
+                                    <field name="jumlah" sum="jum"/>
+                                    <field name="subtotal" sum="jum"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+
+    <record id="pembelian_action" model="ir.actions.act_window">
+        <field name="name">pembelian</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">u.pembelian</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- This Menu Item Must have a parent -->
+    <menuitem id="pembelian_categ"
+            name="PEMBELIAN"
+            parent="transaksi"
+            action="pembelian_action"
+            sequence="50"/>
+</odoo>

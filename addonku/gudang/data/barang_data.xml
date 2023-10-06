@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="seq_g_barang" model="ir.sequence">
+            <field name="name">Barang Sequence</field>
+            <field name="code">g.barang</field>
+            <field name="prefix">B00</field>
+            <field name="padding">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

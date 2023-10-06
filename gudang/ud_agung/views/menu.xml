@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!-- 
+    <menuitem 
+        id="u_root" 
+        name="UD AGUNG" 
+        sequence="10"/> -->
+<!-- 
+    <menuitem 
+        id="menu_barang" 
+        name="ITEM BARANG" 
+        parent="u_root" 
+        sequence="10"/>
+
+    <menuitem 
+        id="menu_transaksi" 
+        name="TRANSAKSI" 
+        parent="u_root" 
+        sequence="20"/>
+
+    <menuitem 
+        id="menu_produksi" 
+        name="PRODUKSI" 
+        parent="u_root" 
+        sequence="30"/> -->
+
+</odoo>

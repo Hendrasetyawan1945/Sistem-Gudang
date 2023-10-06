@@ -1,0 +1,54 @@
+<odoo>
+    <data>
+        <record id="produksi_view_tree" model="ir.ui.view">
+            <field name="name">produksi_view_tree</field>
+            <field name="model">u.produksi</field>
+            <field name="arch" type="xml">
+                <tree string="Produksi Tree" limit="10">
+                    <field name="tanggal_produksi"/>
+                    <!-- <field name="detail_produksi_ids"/> -->
+                    <field name="selected_barang_ids" widget="many2many_tags"></field>                 
+                </tree>
+            </field>
+        </record>
+
+        <record id="produksi_view_form" model="ir.ui.view">
+            <field name="name">produksi_view_form</field>
+            <field name="model">u.produksi</field>
+            <field name="arch" type="xml">
+                <form string="Produksi Form">
+                    <sheet>
+                        <group>
+                            <field name="tanggal_produksi"/>
+                        </group>
+                        <notebook>
+                            <page string="No Nota Produksi">
+                                <field name="detail_produksi_ids">
+                                    <tree string="Detail Produksi" create="true" delete="true" edit="true" editable="bottom">
+                                        <field name="barang_id" placeholder="Masukkan barang di sini..."/>
+                                        <field name="barang_kode"/>
+                                        <field name="stoktersedia"/>
+                                        <field name="satuan"/>
+                                        <field name="jumlah_ambil" sum="Jumlah Ambil"/>
+                                        <field name="hasil" sum="Hasil"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action untuk produksi -->
+        <record id="action_produksi" model="ir.actions.act_window">
+            <field name="name">Produksi</field>
+            <field name="res_model">u.produksi</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Menu -->
+        <menuitem id="menu_u_produksi" name="Data Produksi" parent="u_root" sequence="30"/>
+        <menuitem id="menu_u_produksi_list" name="Daftar Produksi Barang" parent="menu_u_produksi" action="action_produksi" sequence="20"/>
+    </data>
+</odoo>

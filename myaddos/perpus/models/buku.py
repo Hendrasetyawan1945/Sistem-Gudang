@@ -22,3 +22,21 @@ class ModelName(models.Model):
     stok = fields.Integer(
         string='Stok', 
         required=False)
+
+    def _get_produk_qrcode(self):
+        for rec in self:
+            rec.produk_qrcode = str(rec.id)
+
+    def print_qrcode(self):
+        return {
+            'type': 'ir.actions.report',
+            'report_name': 'buku.report_buku_qrcode_id',
+            'report_type': 'qweb-pdf',
+        }
+
+    produk_qrcode = fields.Char(
+        string="Produk QR Code",
+        compute=_get_produk_qrcode,
+        required =False
+    )
+

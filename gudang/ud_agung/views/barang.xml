@@ -1,0 +1,83 @@
+<odoo>
+    <data>
+        <!-- View untuk form u.barang -->
+        <record id="view_barang_form" model="ir.ui.view">
+            <field name="name">u.barang.form</field>
+            <field name="model">u.barang</field>
+            <field name="arch" type="xml">
+                <form string="Barang">
+                    <sheet>
+                        <group>
+                            <field name="kode"/>
+                            <field name="name"/>
+                            <field name="harga_beli"/>
+                            <field name="harga_jual"/>
+                            <field name="stok"/>
+                            <field name="tipe"/>
+                            <field name="tipe_kode"/>
+                            <!-- <field name="tipe_name"/> -->
+                            <field name="satuan"/>
+                        </group>
+                        <group>
+                            <field name="total_value" readonly="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="barang_view_tree" model="ir.ui.view">
+            <field name="name">barang_view_tree</field>
+            <field name="model">u.barang</field>
+            <field name="arch" type="xml">
+                <tree string="barang Tree">
+                    <field name="kode"/>
+                    <field name="name"/>
+                    <field name="harga_beli"/>
+                    <field name="harga_jual"/>
+                    <field name="stok"/>
+                    <field name="tipe"/>
+                    <field name="tipe_name"/>
+                    <field name="tipe_kode"/>
+                    <field name="satuan"/>
+                    <field name="total_value"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- View untuk tree/list u.barang -->
+
+        <!-- <record id="view_barang_tree" model="ir.ui.view">
+            <field name="name">u.barang.tree</field>
+            <field name="model">u.barang</field>
+            <field name="arch" type="xml">
+                    <tree string="Barang">                    
+                    <field name="kode"/>
+                    <field name="name"/>
+                    <field name="harga_beli"/>
+                    <field name="harga_jual"/>
+                    <field name="stok"/>
+                    <field name="tipe"/>
+                    <field name="tipe_name"/>
+                    <field name="tipe_kode"/>
+                    <field name="satuan"/>
+                    <field name="total_value"/>
+                </tree>
+            </field>
+        </record> -->
+
+        <!-- Action untuk menu u.barang -->
+        <record id="action_barang" model="ir.actions.act_window">
+            <field name="name">Barang</field>
+            <field name="res_model">u.barang</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Menu untuk u.barang -->
+        <!-- <menuitem id="menu_u_barang_list" name="Daftar Barang" parent="menu_u_master" action="action_barang" sequence="20"/> -->
+
+        <!-- <menuitem id="menu_barang" name="Daftar Barang" parent="u_root" sequence="20" action="action_barang"/> -->
+
+
+    </data>
+</odoo>

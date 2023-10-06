@@ -1,0 +1,58 @@
+<odoo>
+    <!-- Tree View -->
+    <record id="barang_tree" model="ir.ui.view">
+        <field name="name">barang.tree</field>
+        <field name="model">u.benda</field>
+        <field name="arch" type="xml">
+            <tree string="Daftar Barang">
+                <field name="id_benda"/>
+                <field name="name"/>
+                <field name="tipe"/>
+                <field name="hargabeli"/>
+                <field name="hargajual"/>
+                <field name="satuan"/>
+                <field name="qty"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="benda_view_form" model="ir.ui.view">
+        <field name="name">benda_view_form</field>
+        <field name="model">u.benda</field>
+        <field name="arch" type="xml">
+            <form string="_form">
+                <sheet>
+                <sheet>
+                    <group name="barang" string="Data Barang">
+                        <field name="id_benda"/>
+                        <field name="tipe"/>
+                        <field name="name"/>
+                    </group>
+                    <group name="harga" string="Harga">
+                        <field name="hargabeli"/>
+                        <field name="hargajual"/>
+                    </group>
+                    <group name="stok" string="Stok">
+                        <field name="satuan"/>
+                        <field name="qty"/>
+                    </group>
+                </sheet>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action Window -->
+    <record id="barang_action" model="ir.actions.act_window">
+        <field name="name">Benda</field>
+        <field name="res_model">u.benda</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+
+    <!-- Menu Item -->
+    <menuitem id="barang_menu"
+        name="Benda TES"
+        action="barang_action"
+        parent="produksi"
+        sequence="100" />
+</odoo>

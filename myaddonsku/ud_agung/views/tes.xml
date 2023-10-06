@@ -1,0 +1,53 @@
+<odoo>
+    <data>
+        <!-- View Form untuk u.tes -->
+        <record id="view_u_tes_form" model="ir.ui.view">
+            <field name="name">u.tes.form</field>
+            <field name="model">u.tes</field>
+            <field name="arch" type="xml">
+                <form string="tes">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="kode" readonly="1"/>
+                            <field name="harga"/>
+                            <field name="stok"/>
+                            <field name="total_value" readonly="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- View Tree untuk u.tes -->
+        <record id="view_u_tes_tree" model="ir.ui.view">
+            <field name="name">u.tes.tree</field>
+            <field name="model">u.tes</field>
+            <field name="arch" type="xml">
+                <tree string="tes">
+                    <field name="name"/>
+                    <field name="kode"/>
+                    <field name="harga"/>
+                    <field name="stok"/>
+                    <field name="total_value"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Aksi untuk tampilan daftar u.tes -->
+        <record id="action_u_tes" model="ir.actions.act_window">
+            <field name="name">tes</field>
+            <field name="res_model">u.tes</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Menu untuk u.tes -->
+
+    <menuitem
+        id="Tes_menu"
+        name="Tess BARANG"
+        action="action_u_tes"
+        parent="barang"
+        sequence="300" />
+    </data>
+</odoo>

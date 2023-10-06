@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="report_pembelian_pdf" model="ir.actions.report">
+        <field name="name">Report Pembelian PDF</field>
+        <field name="model">u.pembelian</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">ud_agung.report_pembelian_pdf</field>
+        <field name="report_file">ud_agung.report_pembelian_pdf</field>
+        <field name="binding_model_id" ref="model_u_pembelian"/>
+        <field name="binding_type">report</field>
+    </record>
+        <record id="report_penjualan_pdf" model="ir.actions.report">
+        <field name="name">Report penjualan PDF</field>
+        <field name="model">u.penjualan</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">ud_agung.report_penjualan_pdf</field>
+        <field name="report_file">ud_agung.report_penjualan_pdf</field>
+        <field name="binding_model_id" ref="model_u_penjualan"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

@@ -1,0 +1,106 @@
+<odoo>
+    <data>
+
+        <record id="pembelian_view_tree" model="ir.ui.view">
+            <field name="name">pembelian_view_tree</field>
+            <field name="model">u.pembelian</field>
+            <field name="arch" type="xml">
+                <tree string="Pembelian Tree">
+                    <field name="name"/>
+                    <field name="supplier"/>
+                    <field name="barang_ids" widget="many2many_tags">
+                    </field>                    
+                    <field name="tanggal"/>
+                    <field name="total"/>
+                    <field name="state" decoration-primary="state=='done'" decoration-success="state=='confirm'"
+                        decoration-warning="state=='draft'" decoration-danger="state=='cancel'" widget="badge"/>
+                    <!-- <field name="total"/> -->
+                </tree>
+            </field>
+        </record>
+
+<!-- <record id="pembelian_view_tree" model="ir.ui.view">
+    <field name="name">pembelian_view_tree</field>
+    <field name="model">u.pembelian</field>
+    <field name="arch" type="xml">
+        <tree string="Pembelian Tree">
+            <field name="name"/>
+            <field name="supplier"/>
+            <field name="tanggal"/>
+            <field name="total"/>
+            <field name="state" decoration-primary="state=='done'" decoration-success="state=='confirm'"
+                decoration-warning="state=='draft'" decoration-danger="state=='cancel'" widget="badge"/>
+            <field name="detail_ids" widget="one2many_list">
+                <tree>
+                    <field name="barang"/>
+                    <field name="jumlah"/>
+                    <field name="harga_beli"/>
+                </tree>
+            </field>
+        </tree>
+    </field>
+</record>
+<record id="pembelian_detail_view_tree" model="ir.ui.view">
+    <field name="name">pembelian_detail_view_tree</field>
+    <field name="model">u.pembeliandetail</field>
+    <field name="arch" type="xml">
+        <tree string="Detail Pembelian Tree">
+            <field name="barang"/>
+            <field name="jumlah"/>
+            <field name="harga_beli"/>
+        </tree>
+    </field>
+</record> -->
+
+        <record id="pembelian_view_form" model="ir.ui.view">
+            <field name="name">pembelian_view_form</field>
+            <field name="model">u.pembelian</field>
+            <field name="arch" type="xml">
+                <form string="Pembelian Form">
+                    <header>
+                        <button string="Draft" name="action_draft" type="object"
+                            confirm="Apakah Anda yakin ingin mengembalikan transaksi ini ke draft?" states="cancel"/>
+                        <button string="Confirm" name="action_confirm" type="object" states="draft"/>
+                        <button string="Done" name="action_done" type="object" states="confirm"/>
+                        <button string="Cancel" name="action_cancel" type="object"
+                            confirm="Apakah Anda yakin ingin membatalkan pembelian?" states="confirm,done"/>
+
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="name" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            <field name="supplier" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            <field name="tanggal" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                        </group>
+                        <notebook colspan="8">
+                            <page name="name" string="No Nota Pembelian">
+                                <field name="detail_ids">
+                                    <tree string="Grup" create="true" delete="true" edit="true" editable="bottom">
+                                        <field name="barang"/>
+                                        <field name="barang_kode"/>
+                                        <field name="harga_beli"/>                                        
+                                        <field name="jumlah" sum="jum"/>
+                                        <field name="subtotal" sum="jum"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action untuk Pembelian -->
+        <record id="action_pembelian" model="ir.actions.act_window">
+            <field name="name">Pembelian</field>
+            <field name="res_model">u.pembelian</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Menu -->
+        <!-- <menuitem id="menu_u_pembelian" name="Data Transaksi" parent="u_root" sequence="20"/>
+        <menuitem id="menu_u_pembelian_list" name="Daftar Pembelian Barang" parent="menu_u_pembelian" action="action_pembelian" sequence="10"/>
+    -->
+    </data>
+</odoo>

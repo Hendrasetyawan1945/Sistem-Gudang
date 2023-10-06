@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="penjualan_view_tree" model="ir.ui.view">
+        <field name="name">penjualan_view_tree</field>
+        <field name="model">u.penjualan</field>
+        <field name="arch" type="xml">
+            <tree string="penjualan_tree">
+                <field name="name"/>
+                <!-- <field name="nama"/> -->
+                <!-- <field name="penjualan_ids"/> -->
+                <field name="barang_names"/>
+                <field name="ket"/>
+                <field name="tgl_penjualan"/>
+                <field name="total_bayar"/>
+                <field name="state"
+                    decoration-primary="state=='done'"
+                    decoration-success="state=='confirm'"
+                    decoration-warning="state=='draf'"
+                    decoration-danger="state=='cancel'"
+                widget="badge"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="penjualan_view_form" model="ir.ui.view">
+        <field name="name">penjualan_view_form</field>
+        <field name="model">u.penjualan</field>
+        <field name="arch" type="xml">
+            <form string="_form">
+                    <header>
+                        <button string="Draf" name="action_draf" type="object" confirm="Apakah yakin anda akan mengembalikan transaksi ini ke draf ?" states="cancel"/>
+                        <button string="Confirm" name="action_confirm" type="object" states="draf" /> <!--Untuk merubah menjadi confim -->
+                        <button string="Done" name="action_done" type="object" states="confirm"/>
+                        <button string="Cancel" name="action_cancel" type="object" confirm="Apakah anda akan membatalkan penjualan?" states="confirm,done" />
+
+                        <field name="state" widget="statusbar" statusbar_visible="draf,confirm,done"/>
+                    </header>
+                <sheet>
+                    <group>
+                        <field name="name" attrs="{'readonly' : [('state','!=',('draf'))]}"/>
+                        <field name="ket" attrs="{'readonly' : [('state','!=',('draf'))]}"/>
+                        <field name="tgl_penjualan" attrs="{'readonly' : [('state','!=',('draf'))]}"/>
+                    </group>
+                    <notebook colspan='8'>
+                        <page name="name" string="No Nota Penjualan">
+                            <field name="penjualan_ids">
+                                <tree string="Grup" create="true" delete="true" edit="true" editable="bottom">
+                                    <field name="barang"/>
+                                    <field name="nama"/>
+                                    <field name="harga_jual"/>
+                                    <field name="jumlah" sum="jum"/>
+                                    <field name="subtotal" sum="jum"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="penjualan_action" model="ir.actions.act_window">
+        <field name="name">Penjualan</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">u.penjualan</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- This Menu Item Must have a parent -->
+    <menuitem id="penjualan_categ"
+            name="PENJUALAN"
+            parent="transaksi"
+            action="penjualan_action"
+            sequence="20"/>
+</odoo>

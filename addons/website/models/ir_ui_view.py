@@ -149,7 +149,7 @@ class View(models.Model):
             website_specific_view = view.copy(copy_vals)
 
             view._create_website_specific_pages_for_view(website_specific_view,
-                                                         view.env['website'].browse(current_website_id))
+                                                        view.env['website'].browse(current_website_id))
 
             for inherit_child in view.inherit_children_ids.filter_duplicate().sorted(key=lambda v: (v.priority, v.id)):
                 if inherit_child.website_id.id == current_website_id:

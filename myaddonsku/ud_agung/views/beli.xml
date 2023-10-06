@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="beli_view_tree" model="ir.ui.view">
+        <field name="name">beli_view_tree</field>
+        <field name="model">u.beli</field>
+        <field name="arch" type="xml">
+            <tree string="beli_tree">
+                <field name="name"/>
+                <field name="barang"/>
+                <field name="nama"/>
+                <field name="ket"/>
+                <field name="supplier"/>
+                <field name="namasupplier"/>
+                <field name="tgl_pembelian"/>
+                <field name="jumlah"/>
+                <field name="harga_beli"/>
+                <field name="subtotal"/>
+                <field name="state"
+                    decoration-primary="state=='done'"
+                    decoration-success="state=='confirm'"
+                    decoration-warning="state=='draf'"
+                    decoration-danger="state=='cancel'"
+                widget="badge"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="beli_view_form" model="ir.ui.view">
+        <field name="name">beli_view_form</field>
+        <field name="model">u.beli</field>
+        <field name="arch" type="xml">
+            <form string="_form">
+                    <header>
+                        <button string="Draf" name="action_draf" type="object" confirm="Apakah yakin anda akan mengembalikan transaksi ini ke draf ?" states="cancel"/>
+                        <button string="Confirm" name="action_confirm" type="object" states="draf" /> <!--Untuk merubah menjadi confim -->
+                        <button string="Done" name="action_done" type="object" states="confirm"/>
+                        <button string="Cancel" name="action_cancel" type="object" confirm="Apakah anda akan membatalkan beli?" states="confirm,done" />
+
+                        <field name="state" widget="statusbar" statusbar_visible="draf,confirm,done"/>
+                    </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="barang"/>
+                        <field name="nama"/>
+                        <field name="ket"/>
+                        <field name="supplier"/>
+                        <field name="namasupplier"/>
+                        <field name="tgl_pembelian"/>
+                        <field name="jumlah"/>
+                        <field name="harga_beli"/>
+                        <field name="subtotal"/>
+                        <field name="state"/>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="beli_action" model="ir.actions.act_window">
+        <field name="name">beli</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">u.beli</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+<menuitem
+        id="beli_menu"
+        name="BELI"
+        action="beli_action"
+        parent="barang"
+        sequence="80" />
+</odoo>

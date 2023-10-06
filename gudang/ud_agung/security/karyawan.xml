@@ -1,0 +1,77 @@
+<odoo>
+    <data>
+        <!-- Membuat Group -->
+        <record id="group_manager" model="res.groups">
+            <field name="name">Pemilik UD Agung</field>
+        </record>
+
+
+        <record id="access_u_supplier" model="ir.model.access">
+            <field name="name">Access U Supplier</field>
+            <field name="model_id" ref="model_u_supplier" />
+            <field name="group_id" ref="group_manager" />
+            <field name="perm_read" eval="1" />
+            <field name="perm_write" eval="0" />
+            <field name="perm_create" eval="0" />
+            <field name="perm_unlink" eval="0" />
+        </record>
+        <record id="access_u_stok" model="ir.model.access">
+            <field name="name">Access U Stok</field>
+            <field name="model_id" ref="model_u_stok" />
+            <field name="group_id" ref="group_manager" />
+            <field name="perm_read" eval="1" />
+            <field name="perm_write" eval="0" />
+            <field name="perm_create" eval="0" />
+            <field name="perm_unlink" eval="0" />
+        </record>
+
+        <!-- <record id="access_u_purchase" model="ir.model.access">
+            <field name="name">Access U Pembelian</field>
+            <field name="model_id" ref="model_u_purchase" />
+            <field name="group_id" ref="group_manager" />
+            <field name="perm_read" eval="1" />
+            <field name="perm_write" eval="0" />
+            <field name="perm_create" eval="0" />
+            <field name="perm_unlink" eval="0" />
+        </record>
+        <record id="access_u_purchasedetail" model="ir.model.access">
+            <field name="name">Access U Pembelian Detail</field>
+            <field name="model_id" ref="model_u_purchasedetail" />
+            <field name="group_id" ref="group_manager" />
+            <field name="perm_read" eval="1" />
+            <field name="perm_write" eval="0" />
+            <field name="perm_create" eval="0" />
+            <field name="perm_unlink" eval="0" />
+        </record>
+
+        <record id="access_u_penjualan" model="ir.model.access">
+            <field name="name">Access U Penjualan</field>
+            <field name="model_id" ref="model_u_penjualan" />
+            <field name="group_id" ref="group_manager" />
+            <field name="perm_read" eval="1" />
+            <field name="perm_write" eval="0" />
+            <field name="perm_create" eval="0" />
+            <field name="perm_unlink" eval="0" />
+        </record>
+        <record id="access_u_penjualandetail" model="ir.model.access">
+            <field name="name">Access U Penjualan Detail</field>
+            <field name="model_id" ref="model_u_penjualandetail" />
+            <field name="group_id" ref="group_manager" />
+            <field name="perm_read" eval="1" />
+            <field name="perm_write" eval="0" />
+            <field name="perm_create" eval="0" />
+            <field name="perm_unlink" eval="0" />
+        </record>
+
+        <record id="access_u_produksi" model="ir.model.access">
+            <field name="name">Access U Produksi</field>
+            <field name="model_id" ref="model_u_produksi" />
+            <field name="group_id" ref="group_manager" />
+            <field name="perm_read" eval="1" />
+            <field name="perm_write" eval="0" />
+            <field name="perm_create" eval="0" />
+            <field name="perm_unlink" eval="0" />
+        </record> -->
+
+    </data>
+</odoo>

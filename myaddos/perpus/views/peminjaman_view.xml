@@ -15,10 +15,10 @@
                 <field name="tgl_pinjam"/>
                 <field name="tgl_kembali"/>
                 <field name="state"
-                       decoration-primary="state=='done'"
-                       decoration-success="state=='confirm'"
-                       decoration-warning="state=='draf'"
-                       decoration-danger="state=='cancel'"
+                    decoration-primary="state=='done'"
+                    decoration-success="state=='confirm'"
+                    decoration-warning="state=='draf'"
+                    decoration-danger="state=='cancel'"
                 widget="badge"/>
                 <field name="sudah_kembali"/>
             </tree>
@@ -75,7 +75,7 @@
     </record>
     <!-- This Menu Item must have a parent and an action -->
     <menuitem id="peminjaman_categ" 
-              name="Daftar Peminjaman" 
-              parent="perpus_root" action="peminjaman_action" 
-              sequence="30"/>
+            name="Daftar Peminjaman" 
+            parent="perpus_root" action="peminjaman_action" 
+            sequence="30"/>
 </odoo>

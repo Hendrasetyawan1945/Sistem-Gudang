@@ -1,0 +1,41 @@
+<odoo>
+    <data>
+        <report
+            id="report_penjualan"
+            model="u.penjualan"
+            string="Transaksi Penjualan"
+            report_type="qweb-pdf"
+            name="your_module.penjualan_report_template"
+            file="your_module.penjualan_report_template"
+        />
+        <template id="penjualan_report_template">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="row mt16 mb16">
+                            <h2>Transaksi Penjualan</h2>
+                        </div>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Nomor Penjualan</th>
+                                    <th>Tanggal</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="docs" t-as="record">
+                                    <tr>
+                                        <td><t t-esc="record.name"/></td>
+                                        <td><t t-esc="record.tanggal"/></td>
+                                        <td><t t-esc="record.total"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

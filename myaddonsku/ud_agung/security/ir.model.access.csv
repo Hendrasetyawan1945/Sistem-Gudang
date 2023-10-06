@@ -1,0 +1,16 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_u_barang,access.u.barang,model_u_barang,,1,1,1,1
+access_u_barangkeluar,access.u.barangkeluar,model_u_barangkeluar,,1,1,1,1
+access_u_type,access.u.type,model_u_type,,1,1,1,1
+access_u_supplier,access.u.supplier,model_u_supplier,,1,1,1,1
+access_u_penjualan,access.u.penjualan,model_u_penjualan,,1,1,1,1
+access_u_produk,access.u.produk,model_u_produk,,1,1,1,1
+access_u_penjualandetail,access.u.penjualandetail,model_u_penjualandetail,,1,1,1,1
+access_u_pembelian,access.u.pembelian,model_u_pembelian,,1,1,1,1
+access_u_pembeliandetail,access.u.pembeliandetail,model_u_pembeliandetail,,1,1,1,1
+access_u_beli,access.u.beli,model_u_beli,,1,1,1,1
+access_u_bom,access.u.bom,model_u_bom,,1,1,1,1
+access_u_bom_line,access.u.bom.line,model_u_bom_line,,1,1,1,1
+
+
+access_u_benda,access.u.benda,model_u_benda,,1,1,1,1

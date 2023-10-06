@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="report_barang_pdf">
+        <t t-call="web.html_container">
+            <t t-call="web.internal_layout">
+<!--                <t t-call="web.external_layout">-->
+                <div class="page">
+                    <h1 >Detail barang</h1>
+                    <t t-foreach="docs" t-as="doc">
+                        
+
+<!--                        <div>-->
+<!--                            <img t-att-scr="'/report/barcode/QR/'+ doc.id_pengembalian" style="widht:200px;height:75px;" alt="Barcode"/>-->
+<!--                        </div>-->
+<!--                        <div>-->
+                        <div style="padding:0; margin:0px; padding-top:10px; padding-bottom:10px; text-align:center;">
+                            <img t-att-src="'/report/barcode/QR/'+ (doc.name)  +(doc.uom) + (doc.kategori) " style="width:80px;height:75px" alt="Barcode"/>
+                        </div>
+
+<!--                            <span t-field="doc.id_pengembalian" t-options="{'widget': 'barcode', 'humanreadable':0,'width': 400, 'height':100}"/>-->
+<!--                        </div>-->
+<!--                        <div class="col-5">-->
+<!--                            <span class="text-right">-->
+<!--                                <div t-field="doc.id_pengembalian" t-options="{'widget': 'barcode', 'width': 600, 'height': 100, 'img_style': 'width:350px;height:60px'}"/>-->
+<!--                            </span>-->
+<!--                        </div>-->
+
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+
+
+</odoo>

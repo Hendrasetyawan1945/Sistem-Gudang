@@ -1,0 +1,60 @@
+<odoo>
+    <data>
+        <!-- View untuk form u.type -->
+        <record id="view_type_form" model="ir.ui.view">
+            <field name="name">u.type.form</field>
+            <field name="model">u.type</field>
+            <field name="arch" type="xml">
+                <form string="Type">
+                    <sheet>
+                        <group>
+                            <field name="kode"/>
+                            <field name="name"/>
+
+                        </group>
+                        <notebook>
+                            <page string="Barang">
+                                <field name="barang_ids" widget="one2many_list">
+                                    <tree>
+                                        <field name="name"/>
+                                        <field name="kode"/>
+                                        <field name="harga_beli"/>
+                                        <field name="harga_jual"/>
+                                        <field name="stok"/>
+                                        <field name="tipe_name"/>
+                                        <field name="satuan"/>
+                                        <field name="total_value"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- View untuk tree/list u.type -->
+        <record id="view_type_tree" model="ir.ui.view">
+            <field name="name">u.type.tree</field>
+            <field name="model">u.type</field>
+            <field name="arch" type="xml">
+                <tree string="Type">
+                    <field name="kode"/>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action untuk menu u.type -->
+        <record id="action_type" model="ir.actions.act_window">
+            <field name="name">Type</field>
+            <field name="res_model">u.type</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Menu untuk u.type -->
+        <!-- <menuitem id="menu_u_type_list" name="Daftar Type" parent="menu_u_master" action="action_type" sequence="5"/> -->
+
+        <!-- <menuitem id="menu_type" name="Daftar Type" parent="u_root" action="action_type" sequence="10"/> -->
+    </data>
+</odoo>

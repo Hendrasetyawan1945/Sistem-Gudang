@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="barangkeluar_tree" model="ir.ui.view">
+        <field name="name">barangkeluar.tree</field>
+        <field name="model">u.barangkeluar</field>
+        <field name="arch" type="xml">
+            <tree string="barangkeluar">
+                <field name="name"/>
+                <field name="id_barang"/>
+                <field name="nama"/>
+                <field name="tgl_keluar"/>
+                <field name="jumlah"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="barangkeluar_view_form" model="ir.ui.view">
+        <field name="name">barangkeluar_view_form</field>
+        <field name="model">u.barangkeluar</field>
+        <field name="arch" type="xml">
+            <form string="_form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="id_barang"/>
+                        <field name="nama"/>
+                        <field name="tgl_keluar"/>
+                        <field name="jumlah"/>              
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="bk_action" model="ir.actions.act_window">
+        <field name="name">Barang Keluar</field>
+        <field name="res_model">u.barangkeluar</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+
+    <menuitem
+        id="bk_menu"
+        name="BARANG KELUAR"
+        action="bk_action"
+        parent="produksi"
+        sequence="10" />
+
+</odoo>

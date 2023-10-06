@@ -1,0 +1,109 @@
+<odoo>
+    <data>
+
+
+
+    <!-- Graph View -->
+        <record id="stok_graph_view" model="ir.ui.view">
+            <field name="name">u.stok.graph.view</field>
+            <field name="model">u.stok</field>
+            <field name="arch" type="xml">
+                <graph string="Data Stock Barang" type="bar">
+                    <field name="name" type="row"/>
+                    <field name="stokbarang" type="measure"/>
+                </graph>
+            </field>
+        </record>
+        
+        <!-- View untuk form u.barang -->
+        <record id="view_stok_form" model="ir.ui.view">
+            <field name="name">u.stok.form</field>
+            <field name="model">u.stok</field>
+            <field name="arch" type="xml">
+                <form string="stok">
+                    <sheet>
+                    <group name="barang" string="Data Barang">
+                    <field name="kode"/>
+                    <field name="name"/>
+                    <field name="satuan"/>
+                </group>
+
+                <group>
+                    <group name="stok bahan" string="Stok Bahan">
+                        <field name="stokbahan"/>
+                        <!-- <field name="bahanbertambah"/>
+                        <field name="bahanberkurang"/> -->
+                        <field name="hargabeli"/>
+                    </group>
+                    <group name="stok barang" string="Stok Barang">
+                        <field name="stokbarang"/>
+                        <!-- <field name="barangbertambah"/>
+                        <field name="barangberkurang"/> -->
+                        <field name="hargajual"/>
+                    </group>
+                </group>
+
+            <group>
+                    <group name="Riwayat Pembelian" string="Riwayat Penjualan Barang ">
+                                <field name="pembelian_ids" widget="many2many_tags" string="ID Pembelian Bahan"/>
+                                <field name="jumlah_terbeli" string='Jumlah Terbeli' readonly="1"/>
+                                <field name="total_pembelian" string='Total Pembelian' readonly="1"/>
+                    </group>
+
+
+                    <group name="Riwayat Penjualan" string="Riwayat Penjualan Barang ">
+                                <field name="penjualan_ids" widget="many2many_tags" string="ID Penjualan Barang"/>
+                                <!-- Tampilkan field 'total_penjualan' di bawah 'penjualan_ids' -->
+                                <field name="jumlah_terjual" readonly="1"/>
+                                <field name="total_penjualan" readonly="1"/>
+                    </group>
+
+                    
+            </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- View untuk tree/list u.stok -->
+        <record id="view_stok_tree" model="ir.ui.view">
+            <field name="name">u.stok.tree</field>
+            <field name="model">u.stok</field>
+            <field name="arch" type="xml">
+                <tree string="stok" limit="10">                    
+                            <field name="kode"/>
+                            <field name="name"/>
+                            <field name="satuan"/>
+                            <field name="stokbahan"/>
+                            <!-- <field name="bahanbertambah"/>
+                            <field name="bahanberkurang"/> -->
+                            <field name="hargabeli"/>
+                            <field name="stokbarang"/>
+                            <!-- <field name="barangbertambah"/>
+                            <field name="barangberkurang"/> -->
+                            <field name="hargajual"/>
+                            <!-- <field name="harga_beli"/> -->
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action untuk menu u.stok -->
+        <record id="action_stok" model="ir.actions.act_window">
+            <field name="name">Data Barang dan Bahan</field>
+            <field name="res_model">u.stok</field>
+            <field name="view_mode">tree,form,graph</field>
+        </record>
+
+        <!-- Menu untuk u.stok -->
+        <menuitem 
+        id="u_root" 
+        name="UD AGUNG" 
+        sequence="10"/> -->
+        <menuitem id="menu_u_master" name="Master Data" parent="u_root" sequence="10"/>
+        <menuitem id="menu_u_stok_list" name="Data Stok Bahan Dan Barang" parent="menu_u_master" action="action_stok" sequence="10"/>
+
+
+
+    </data>
+</odoo>

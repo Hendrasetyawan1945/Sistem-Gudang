@@ -43,6 +43,7 @@
         'report/report.xml',
         'report/peminjaman_pdf.xml',
         'report/pengembalian_pdf.xml',
+        'report/qr_code.xml',
 
         'wizz/peminjamanreport.xml',
 

@@ -19,6 +19,7 @@ class pengembalian(models.Model):
         comodel_name='p.peminjaman',
         string='Peminjaman_id',
         required=True)
+        
     @api.depends('peminjaman_id')
     def _compute_nama_peminjam(self):
         for record in self:

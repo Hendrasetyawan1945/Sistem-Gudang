@@ -1,8 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
-        
-        $END$
-    
-    </data>
+    <report
+            id="report_master_buku_qrcode"
+            model="p.buku"
+            string="Buku QRCode"
+            report_type="qweb-pdf"
+            name="buku.report_buku_qrcode_id"
+            file="buku.report_buku_qrcode_id"
+        />
+
+<!--    <record id="paperformat_buku_qrcode_id" model="report.paperformat">-->
+<!--        <field name="name">Buku QRCode</field>-->
+<!--        <field name="format">Custom</field>-->
+<!--        <field name="page_height">18</field>-->
+<!--        <field name="page_width">17</field>-->
+<!--        <field name="orientation">Landscape</field>-->
+<!--        <field name="margin_top">0</field>-->
+<!--        <field name="margin_bottom">0</field>-->
+<!--        <field name="margin_left">0</field>-->
+<!--        <field name="margin_right">0</field>-->
+<!--        <field name="header_line" eval="False"/>-->
+<!--        <field name="header_spacing">0</field>-->
+<!--        <field name="dpi">150</field>-->
+<!--    </record>-->
+
+<!--    <record id="buku.report_master_buku_qrcode" model="ir.actions.report">-->
+<!--        <field name="paperformat_id" ref="buku.paperformat_buku_qrcode_id"/>-->
+<!--    </record>-->
+
+    <template id="report_buku_qrcode_id">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <div class="page">
+                    <div class="row">
+                        <p style="fort-size: 8px; font-weight: bold; padding-top:8px; padding-bottom:4px ;padding-left:5px; padding-right:4px;">
+                           <img t-if="o.produk_qrcode"
+                                t-att-scr="'http://localhost:8069/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' %('QR',o.produk_qrcode, 200, 200,)"
+                                style="widht:102px; height=102px; float:left;"/>
+                        </p>
+                    </div>
+
+                </div>
+            </t>
+        </t>
+    </template>
+
 </odoo>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem 
+        id="u_root" 
+        name="UD AGUNG" 
+        sequence="10"/>
+
+    <!-- This Menu Item Must have a parent -->
+    <menuitem 
+        id="barang" 
+        name="ITEM BARANG" 
+        parent="u_root" 
+        sequence="10"/>
+
+    <!-- This Menu Item Must have a parent -->
+    <menuitem 
+        id="transaksi" 
+        name="TRANSAKSI" 
+        parent="u_root" 
+        sequence="20"/>
+
+    <!-- This Menu Item Must have a parent -->
+    <menuitem 
+        id="produksi" 
+        name="PRODUKSI" 
+        parent="u_root" 
+        sequence="30"/>
+
+</odoo>

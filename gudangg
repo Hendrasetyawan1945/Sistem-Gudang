@@ -1,0 +1,3 @@
+
+
+./odoo-bin --addons-path=/home/hendra/Dokumen/odoo-15.0/addons,/home/hendra/Dokumen/odoo-15.0/myaddos,/home/hendra/Dokumen/gudang/gudang -d gudang --db_port 5432 --xmlrpc-port=8060  --limit-memory-hard 0 --limit-time-real=10000 -u ud_agung

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <record id="seq_p_peminjaman" model="ir.sequence">
-            <field name="name">Peminjaman Sequence</field>
+        <record id="seq_g_type" model="ir.sequence">
+            <field name="name">Type Sequence</field>
             <field name="code">p.peminjaman</field>
-            <field name="prefix">PO</field>
+            <field name="prefix">TO</field>
             <field name="padding">4</field>
             <field name="company_id" eval="False"/>
         </record>

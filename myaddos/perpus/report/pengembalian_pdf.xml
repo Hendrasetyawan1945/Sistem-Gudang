@@ -35,6 +35,23 @@
                             <div class="col-4">Total Denda :</div>
                             <div class="col-5"><span t-field="doc.denda"/></div>
                         </div>
+
+<!--                        <div>-->
+<!--                            <img t-att-scr="'/report/barcode/QR/'+ doc.id_pengembalian" style="widht:200px;height:75px;" alt="Barcode"/>-->
+<!--                        </div>-->
+<!--                        <div>-->
+                           <div style="padding:0; margin:0px; padding-top:10px; padding-bottom:10px; text-align:center;">
+                            <img t-att-src="'/report/barcode/Code128/'+ doc.id_pengembalian + doc.name" style="width:400px;height:75px" alt="Barcode"/>
+                          </div>
+
+<!--                            <span t-field="doc.id_pengembalian" t-options="{'widget': 'barcode', 'humanreadable':0,'width': 400, 'height':100}"/>-->
+<!--                        </div>-->
+<!--                        <div class="col-5">-->
+<!--                            <span class="text-right">-->
+<!--                                <div t-field="doc.id_pengembalian" t-options="{'widget': 'barcode', 'width': 600, 'height': 100, 'img_style': 'width:350px;height:60px'}"/>-->
+<!--                            </span>-->
+<!--                        </div>-->
+
                     </t>
                 </div>
             </t>

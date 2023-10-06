@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Supplier Form View -->
+        <record id="view_supplier_form" model="ir.ui.view">
+            <field name="name">supplier.form</field>
+            <field name="model">u.supplier</field>
+            <field name="arch" type="xml">
+                <form string="Supplier">
+                    <sheet>
+                        <group>                            
+                            <field name="kode"/>
+                            <field name="name"/>
+                            <field name="alamat"/>
+                            <field name="telepon"/>
+                            <field name="email"/>
+                            <field name="kota"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Supplier List View -->
+        <record id="view_supplier_list" model="ir.ui.view">
+            <field name="name">supplier.list</field>
+            <field name="model">u.supplier</field>
+            <field name="arch" type="xml">
+                <tree string="Suppliers" limit="10">
+                    <field name="kode"/>
+                    <field name="name"/>
+                    <field name="alamat"/>
+                    <field name="telepon"/>
+                    <field name="email"/>
+                    <field name="kota"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Supplier Action -->
+        <record id="action_supplier" model="ir.actions.act_window">
+            <field name="name">Supplier</field>
+            <field name="res_model">u.supplier</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Supplier Menu Item -->
+        <!-- <menuitem id="menu_supplier" name="Supplierss" parent="u_root" sequence="40"/> -->
+        <!-- <menuitem id="menu_supplier_list" name="Supplier List" parent="menu_supplier" action="action_supplier"/> -->
+        
+        <menuitem id="menu_supplier_list" name="Daftar Supplier" parent="menu_u_master" action="action_supplier" sequence="20"/>
+
+    </data>
+</odoo>

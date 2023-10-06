@@ -11,8 +11,8 @@ class peminjaman(models.Model):
     #     required=True, default=lambda self: _('New'),
     #     copy=False, readonly='True')
     name = fields.Char(string='Kode Peminjaman',
-                       required=True,
-                       )
+                    required=True,
+                    )
     no_anggota = fields.Many2one(
         comodel_name='p.anggota',
         string='No_anggota',
@@ -42,13 +42,13 @@ class peminjaman(models.Model):
         string='Tanggal Kembali',
         required=False)
     state = fields.Selection(string='Status',
-                             selection=[('draf', 'Draf'),                                        ('confirm', 'Confirm'),
+                            selection=[('draf', 'Draf'),                                        
                                         ('confirm', 'Confirm'),
                                         ('done', 'Done'),
                                         ('cancel', 'Cancel')],
-                             required=True,
-                             readonly=True,
-                             default='draf')
+                            required=True,
+                            readonly=True,
+                            default='draf')
     sudah_kembali = fields.Boolean(string='Sudah Buku Dikembalikan', default=False)
 
     # write untuk mengedit suatu record
@@ -75,6 +75,7 @@ class peminjaman(models.Model):
                 else:
                     pass  # jika tidak ada perubahan maka tidak ngapa"in
         return record
+
     def unlink(self): #berguna untuk menghapus record
         if self.filtered(lambda line: line.state != 'draf'):
             raise ValidationError("Maaf tidak dapat menghapus record pembelian silahkan kembalikan de Draf !!!")
@@ -89,6 +90,7 @@ class peminjaman(models.Model):
                     print(str(i.kd_register.name) + ' ' + str(i.qty))
                     i.kd_register.stok -= i.qty
             record = super(peminjaman, self).unlink()
+            
     @api.constrains('cek')
     def _check_anggota(self):
         for record in self:
@@ -145,6 +147,8 @@ class peminjamandetail(models.Model):
             self.env['p.buku'].search([('id', '=', record.kd_register.id)]).write({
                 'stok': record.kd_register.stok - record.qty})
             return record
+
+            
     @api.depends('jdl')
     def _compute_jdl(self):
         for i in self:
@@ -159,5 +163,5 @@ class peminjamandetail(models.Model):
                         i.kd_register.judul))
             elif (i.qty > i.kd_register.stok):
                 raise ValidationError('Stok Buku {} tidak mencukupi, hanya tersedia {}'
-                                      .format(i.kd_register.judul, i.kd_register.stok))
+                                    .format(i.kd_register.judul, i.kd_register.stok))
 

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="seq_u_pembelian" model="ir.sequence">
+            <field name="name">Pembelian Sequence</field>
+            <field name="code">u.pembelian</field>
+            <field name="prefix">PO</field>
+            <field name="padding">2</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

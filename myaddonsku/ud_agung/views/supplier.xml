@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="supplier_tree" model="ir.ui.view">
+        <field name="name">supplier.tree</field>
+        <field name="model">u.supplier</field>
+        <field name="arch" type="xml">
+            <tree string="Supplier">
+
+                <field name="id_supplier"/>
+                <field name="name"/>
+                <field name="alamat"/>
+                <field name="no_tlpn"/>
+                <!-- <field name="tes"/> -->
+            </tree>
+        </field>
+    </record>
+
+
+
+    <record id="form_view_form" model="ir.ui.view">
+        <field name="name">form_view_form</field>
+        <field name="model">u.supplier</field>
+        <field name="arch" type="xml">
+            <form string="form_form">
+                <sheet>
+                    <group name="name" string="Supplier">
+                        <field name="id_supplier"/>
+                        <field name="name"/>
+                        <field name="alamat"/>
+                        <field name="no_tlpn"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="supplier_action" model="ir.actions.act_window">
+        <field name="name">Supplier</field>
+        <field name="res_model">u.supplier</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+
+    <menuitem
+        id="supplier_menu"
+        name="SUPPLIER"
+        action="supplier_action"
+        parent="transaksi"
+        sequence="10" />
+
+</odoo>

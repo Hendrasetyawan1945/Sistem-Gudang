@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="barang_view_tree" model="ir.ui.view">
+        <field name="name">barang_view_tree</field>
+        <field name="model">g.barang</field>
+        <field name="arch" type="xml">
+            <tree string="barang_tree">
+                <field name="id_barang"/>
+                <field name="name"/>
+                <field name="satuan"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="form_view_form" model="ir.ui.view">
+        <field name="name">form_view_form</field>
+        <field name="model">g.barang</field>
+        <field name="arch" type="xml">
+            <form string="form_form">
+                <sheet>
+                    <group name="name" string="Nama Barang">
+                    <field name="id_barang"/>
+                    <field name="name"/>
+                    <field name="satuan"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="barang_action" model="ir.actions.act_window">
+        <field name="name">Type</field>
+        <field name="res_model">g.barang</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+
+    <menuitem
+        id="Barang_menu"
+        name="Nama Barang"
+        action="barang_action"
+        parent="barang"
+        sequence="10" />
+
+</odoo>

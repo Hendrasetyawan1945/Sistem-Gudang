@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="barang_tree" model="ir.ui.view">
+        <field name="name">barang.tree</field>
+        <field name="model">u.barang</field>
+        <field name="arch" type="xml">
+            <tree string="Barang">
+
+                <field name="id_barang"/>
+                <field name="name"/>
+                <field name="tipe"/>
+                <field name="hargabeli"/>
+                <field name="hargajual"/>
+                <field name="satuan"/>
+                <field name="qty"/>
+                <!-- <field name="tes"/> -->
+            </tree>
+        </field>
+    </record>
+
+
+
+
+
+<record id="barang_view_form" model="ir.ui.view">
+    <field name="name">barang_view_form</field>
+    <field name="model">u.barang</field>
+    <field name="arch" type="xml">
+        <form string="_form">
+            <sheet>
+                <group name="barang" string="Data Barang">
+                    <field name="id_barang"/>                    
+                    <field name="name"/>
+
+                    <field name="tipe" widget="many2one" options="{'no_create': True}" domain="[('type', '!=', False)]"/>
+                    <field name="type_bar" string="Type Barang" readonly="1" related="tipe.name"/>
+
+                    <field name="tipe" widget="many2one" options="{'no_create': True}" domain="[('type', '!=', False)]"/>
+                    <field name="type_bar" string="Type Barang" readonly="1"/>
+                </group>
+                <group name="harga" string="Harga">
+                    <field name="hargabeli" placeholder="Input harus berupa angka pada field Harga Beli!"/>
+                    <field name="hargajual" placeholder="Input harus berupa angka pada field Harga Jual!"/>
+                </group>
+                <group name="stok" string="Stok">
+                    <field name="satuan"/>
+                    <field name="qty"/>
+                </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+
+
+<!-- 
+    <record id="barang_view_form" model="ir.ui.view">
+        <field name="name">barang_view_form</field>
+        <field name="model">u.barang</field>
+        <field name="arch" type="xml">
+            <form string="_form">
+                <sheet>
+                <sheet>
+                    <group name="barang" string="Data Barang">
+                        <field name="id_barang"/>                        
+                        <field name="name"/>
+                    <field name="tipe" widget="many2one" options="{'no_create': True}"/>
+                    </group>
+                    <group name="harga" string="Harga">
+                        <field name="hargabeli" placeholder="Tes Saja"/>
+                        <field name="hargajual"/>
+                    </group>
+                    <group name="stok" string="Stok">
+                        <field name="satuan"/>
+                        <field name="qty"/>
+                    </group>
+                </sheet>
+                </sheet>
+            </form>
+        </field>
+    </record> -->
+
+
+    <record id="barang_action" model="ir.actions.act_window">
+        <field name="name">Barang</field>
+        <field name="res_model">u.barang</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+
+    <menuitem
+        id="barang_menu"
+        name="BARANG"
+        action="barang_action"
+        parent="barang"
+        sequence="10" />
+
+</odoo>

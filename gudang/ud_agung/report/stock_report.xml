@@ -1,0 +1,163 @@
+<odoo>
+    <data>
+
+    <report
+            id="report_stockbahan"
+            model="u.stok"
+            string="Data Stock Bahan"
+            report_type="qweb-pdf"
+            name="ud_agung.stockb_report_template_stock"
+            file="ud_agung.stockb_report_template_stock"
+        />
+        <template id="ud_agung.stockb_report_template_stock">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="row mt16 mb16">
+                            <h2>Data Stock Bahan</h2>
+                        </div>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Nama Bahan</th>
+                                    <th>Stok Bahan</th>
+                                    <th>Satuan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="docs" t-as="record">
+                                    <tr>
+                                        <td><t t-esc="record.name"/></td>
+                                        <td><t t-esc="record.stokbahan"/></td>
+                                        <td><t t-esc="record.satuan"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+
+        <report
+            id="report_stock"
+            model="u.stok"
+            string="Data Stock Barang"
+            report_type="qweb-pdf"
+            name="ud_agung.stock_report_template_stock"
+            file="ud_agung.stock_report_template_stock"
+        />
+        <template id="ud_agung.stock_report_template_stock">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="row mt16 mb16">
+                            <h2>Data Stock Barang</h2>
+                        </div>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Nama Barang</th>
+                                    <th>Stok Barang</th>
+                                    <th>Satuan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="docs" t-as="record">
+                                    <tr>
+                                        <td><t t-esc="record.name"/></td>
+                                        <td><t t-esc="record.stokbarang"/></td>
+                                        <td><t t-esc="record.satuan"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+        <report
+            id="report_pembelian"
+            model="u.stok"
+            string="Data Daftar Pembelian Stock Bahan"
+            report_type="qweb-pdf"
+            name="ud_agung.stock_report_template_pembelian"
+            file="ud_agung.stock_report_template_pembelian"
+        />
+        <template id="ud_agung.stock_report_template_pembelian">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="row mt16 mb16">
+                            <h2>Data Daftar Pembelian Stock Bahan</h2>
+                        </div>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Nama Bahan</th>
+                                    <th>Stok Bahan Yang Bertambah</th>
+                                    <th>Harga Beli</th>
+                                    <th>Satuan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="docs" t-as="record">
+                                    <tr>
+                                        <td><t t-esc="record.name"/></td>
+                                        <td><t t-esc="record.bahanbertambah"/></td>
+                                        <td><t t-esc="record.hargabeli"/></td>
+                                        <td><t t-esc="record.satuan"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+
+<report
+            id="report_penjualan"
+            model="u.stok"
+            string="Data Daftar penjualan Stock Bahan"
+            report_type="qweb-pdf"
+            name="ud_agung.stock_report_template_penjualan"
+            file="ud_agung.stock_report_template_penjualan"
+        />
+        <template id="ud_agung.stock_report_template_penjualan">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="row mt16 mb16">
+                            <h2>Data Daftar Penjualan Barang</h2>
+                        </div>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Nama Barang</th>
+                                    <th>Stok Barang Yang Terjual</th>
+                                    <th>Harga jual</th>
+                                    <th>Satuan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="docs" t-as="record">
+                                    <tr>
+                                        <td><t t-esc="record.name"/></td>
+                                        <td><t t-esc="record.barangberkurang"/></td>
+                                        <td><t t-esc="record.hargajual"/></td>
+                                        <td><t t-esc="record.satuan"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

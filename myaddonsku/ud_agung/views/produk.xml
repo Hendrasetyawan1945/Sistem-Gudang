@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="produk_tree" model="ir.ui.view">
+        <field name="name">produk.tree</field>
+        <field name="model">u.produk</field>
+        <field name="arch" type="xml">
+            <tree string="produk">
+                <field name="name"/>
+                <field name="id_bk"/>
+                <field name="namabk"/>                
+                <field name="id_barang"/>
+                <field name="tgl_jadi"/>
+                <field name="jumlah"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="form_view_form" model="ir.ui.view">
+        <field name="name">form_view_form</field>
+        <field name="model">u.produk</field>
+        <field name="arch" type="xml">
+            <form string="form_form">
+                <sheet>
+                    <group name="name" string="Barang Olahan">
+                        <field name="name"/>
+                        <field name="id_bk"/>
+                        <field name="namabk"/>  
+                    </group>
+                    <group name="name" string="Barang Jadi">
+                        <field name="id_barang"/>
+                        <field name="tgl_jadi"/>
+                        <field name="jumlah"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="produksi_action" model="ir.actions.act_window">
+        <field name="name">Produksi</field>
+        <field name="res_model">u.produk</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+
+    <menuitem
+        id="produksi_menu"
+        name="PRODUKSI"
+        action="produksi_action"
+        parent="produksi"
+        sequence="80" />
+
+</odoo>

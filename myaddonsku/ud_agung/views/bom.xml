@@ -1,0 +1,58 @@
+<!-- views/u_bom_views.xml -->
+
+<odoo>
+    <data>
+        <!-- Form View -->
+        <record id="view_bom_form" model="ir.ui.view">
+            <field name="name">u.bom.form</field>
+            <field name="model">u.bom</field>
+            <field name="arch" type="xml">
+                <form string="Bill of Materials">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="product_id"/>
+                        </group>
+                        <notebook>
+                            <page string="BOM Lines">
+                                <field name="bom_line_ids" mode="tree">
+                                    <tree>
+                                        <field name="component_id"/>
+                                        <field name="quantity"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- List View -->
+        <record id="view_bom_list" model="ir.ui.view">
+            <field name="name">u.bom.list</field>
+            <field name="model">u.bom</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="product_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action -->
+        <record id="action_bom" model="ir.actions.act_window">
+            <field name="name">Bill of Materials</field>
+            <field name="res_model">u.bom</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    <menuitem
+        id="bom_menu"
+        name="BOM"
+        action="action_bom"
+        parent="barang"
+        sequence="100" />
+    </data>
+</odoo>

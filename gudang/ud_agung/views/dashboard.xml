@@ -1,0 +1,57 @@
+<odoo>
+    <data>
+        <!-- Tampilan Grafik -->
+        <record id="dashboard_graph_view" model="ir.ui.view">
+            <field name="name">u.dashboard.graph.view</field>
+            <field name="model">u.dashboard</field>
+            <field name="type">graph</field>
+            <field name="arch" type="xml">
+                <graph string="Data Stock Barang" type="bar">
+                    <field name="name" type="row"/>
+                    <field name="stok_bahan" type="measure"/>
+                    <field name="stok_barang" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+        <!-- Tampilan Detail -->
+        <record id="dashboard_form_view" model="ir.ui.view">
+            <field name="name">u.dashboard.form.view</field>
+            <field name="model">u.dashboard</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="stok_bahan"/>
+                            <field name="stok_barang"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tampilan Dashboard -->
+        <record id="dashboard_view" model="ir.ui.view">
+            <field name="name">u.dashboard.view</field>
+            <field name="model">u.dashboard</field>
+            <field name="type">dashboard</field>
+            <field name="arch" type="xml">
+                <dashboard>
+                    <page string="Dashboard">
+                        <group>
+                            <group>
+                                <board>
+                                    <item>
+                                        <action type="action" name="%(dashboard_graph_view)d" id="dashboard_action_graph" view_mode="graph" context="{}" view_type="graph" res_model="u.dashboard"/>
+                                    </item>
+                                </board>
+                            </group>
+                        </group>
+                    </page>
+                </dashboard>
+            </field>
+        </record>
+    </data>
+</odoo>

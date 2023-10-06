@@ -1,0 +1,91 @@
+<odoo>
+    <data>
+<!-- Graph View -->
+        <record id="penjualan_graph_view" model="ir.ui.view">
+            <field name="name">u.penjualan.graph.view</field>
+            <field name="model">u.penjualan</field>
+            <field name="arch" type="xml">
+                <graph string="Data Penjualan" type="bar">
+                    <field name="tanggal" type="col"/>
+                    <field name="total" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+
+        <record id="penjualan_view_tree" model="ir.ui.view">
+            <field name="name">penjualan_view_tree</field>
+            <field name="model">u.penjualan</field>
+            <field name="arch" type="xml">
+                <tree string="Penjualan Tree" limit="10">
+                    <field name="name"/>
+                    <field name="barang_ids" widget="many2many_tags"></field>                    
+                    <field name="tanggal"/>
+                    <field name="total"/>
+                    <field name="state" decoration-primary="state=='confirm'"
+                        decoration-warning="state=='draft'" decoration-danger="state=='cancel'" widget="badge"/>
+                </tree>
+            </field>
+        </record>
+
+        
+
+        <record id="penjualan_view_form" model="ir.ui.view">
+            <field name="name">penjualan_view_form</field>
+            <field name="model">u.penjualan</field>
+            <field name="arch" type="xml">
+                <form string="Penjualan Form">
+                    <header>
+                        <button string="Draft" name="action_draft" type="object"
+                            confirm="Apakah Anda yakin ingin mengembalikan transaksi ini ke draft?" states="cancel"/>
+
+                        <button string="Confirm" name="action_confirm" type="object" 
+                        confirm="Apakah Anda yakin ingin mengkonfirmasi transaksi ini?" states="draft"/>
+                        
+                        <button string="Cancel" name="action_cancel" type="object"
+                            confirm="Apakah Anda yakin ingin membatalkan penjualan?" states="confirm"/>
+
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm"/>
+                    </header>
+                    
+                    <sheet>
+                        <group>
+                            <field name="name" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            <field name="tanggal" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                        </group>
+                        <notebook colspan="8">
+                            <page name="name" string="No Nota Penjualan">
+                                <field name="detail_ids">
+                                
+                                    <tree string="Grup" create="true" delete="true" edit="true" editable="bottom">
+                                        <field name="barang" placeholder="Masukkan barang di sini..."/>
+                                        <field name="barang_kode"/>
+                                        <field name="stoktersedia"/>
+                                        <field name="satuan"/>
+                                        <field name="harga_jual"/>                                        
+                                        <field name="jumlah" sum="jum"/>
+                                        <field name="subtotal" sum="sum"/>
+                                    </tree>
+
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action untuk Penjualan -->
+        <record id="action_penjualan" model="ir.actions.act_window">
+            <field name="name">Penjualan</field>
+            <field name="res_model">u.penjualan</field>
+            <field name="view_mode">tree,form,graph</field>
+        </record>
+
+        <!-- Menu -->
+
+        <menuitem id="menu_u_penjualan_list" name="Daftar Penjualan Barang" parent="menu_u_purchase" action="action_penjualan" sequence="20"/>
+        
+
+    </data>
+</odoo>

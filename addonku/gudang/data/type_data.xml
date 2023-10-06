@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="seq_g_type" model="ir.sequence">
+            <field name="name">Type Sequence</field>
+            <field name="code">g.type</field>
+            <field name="prefix">TO</field>
+            <field name="padding">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,43 @@
+<!-- <odoo>
+    <data>
+        <report
+            id="report_stock"
+            model="u.stok"
+            string="Data Daftar Pembelian Stock Bahan"
+            report_type="qweb-pdf"
+            name="ud_agung.stock_report_template"
+            file="ud_agung.stock_report_template"
+        />
+        <template id="stock_report_template">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="row mt16 mb16">
+                            <h2>Data Stock Barang</h2>
+                        </div>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Nama Bahan</th>
+                                    <th>Stok Bahan Yang Bertambah</th>
+                                    <th>Harga Beli</th>
+                                    <th>Satuan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="docs" t-as="record">
+                                    <tr>
+                                        <td><t t-esc="record.name"/></td>
+                                        <td><t t-esc="record.bahanbertambah"/></td>
+                                        <td><t t-esc="record.hargabeli"/></td>
+                                        <td><t t-esc="record.satuan"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo> -->
